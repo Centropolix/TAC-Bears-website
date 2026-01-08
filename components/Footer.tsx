@@ -16,14 +16,16 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
       rights: 'All rights reserved.',
       season: 'VEX Robotics Pushback Season 2025-2026.',
       contact: 'CONTACT',
-      gallery: 'GALLERY'
+      gallery: 'GALLERY',
+      sponsors: 'SPONSORS'
     },
     tr: {
       tagline: 'Mühendislik Gelecektir',
       rights: 'Tüm hakları saklıdır.',
       season: 'VEX Robotik Pushback Sezonu 2025-2026.',
       contact: 'İLETİŞİM',
-      gallery: 'GALERİ'
+      gallery: 'GALERİ',
+      sponsors: 'SPONSORLAR'
     }
   };
 
@@ -41,16 +43,22 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0">
+          <div className="flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0 text-center">
             <a 
               href="#gallery" 
-              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-sm transition-colors"
+              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-xs transition-colors"
             >
               {translations[lang].gallery}
             </a>
             <a 
+              href="#sponsors" 
+              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-xs transition-colors"
+            >
+              {translations[lang].sponsors}
+            </a>
+            <a 
               href="#contact" 
-              className="text-yellow-500 hover:text-white font-bold heading-font tracking-widest text-sm transition-colors"
+              className="text-yellow-500 hover:text-white font-bold heading-font tracking-widest text-xs transition-colors"
             >
               {translations[lang].contact}
             </a>

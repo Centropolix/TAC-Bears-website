@@ -12,14 +12,15 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const translations = {
-    en: { home: 'HOME', team: 'OUR TEAM', instagram: 'INSTAGRAM', contact: 'CONTACT', gallery: 'GALLERY' },
-    tr: { home: 'ANA SAYFA', team: 'EKİBİMİZ', instagram: 'INSTAGRAM', contact: 'İLETİŞİM', gallery: 'GALERİ' }
+    en: { home: 'HOME', team: 'OUR TEAM', sponsors: 'SPONSORS', instagram: 'INSTAGRAM', contact: 'CONTACT', gallery: 'GALLERY' },
+    tr: { home: 'ANA SAYFA', team: 'EKİBİMİZ', sponsors: 'SPONSORLAR', instagram: 'INSTAGRAM', contact: 'İLETİŞİM', gallery: 'GALERİ' }
   };
 
   const navLinks = [
     { name: translations[lang].home, id: 'home' },
     { name: translations[lang].team, id: 'team' },
     { name: translations[lang].gallery, id: 'gallery' },
+    { name: translations[lang].sponsors, id: 'sponsors' },
     { name: translations[lang].instagram, id: 'instagram' },
     { name: translations[lang].contact, id: 'contact' },
   ];
@@ -83,14 +84,14 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
             </a>
           </div>
           
-          <div className="hidden md:flex flex-[3] justify-center items-center h-full">
-            <div className="flex space-x-6 lg:space-x-10 z-[110]">
+          <div className="hidden md:flex flex-[4] justify-center items-center h-full">
+            <div className="flex space-x-4 lg:space-x-8 z-[110]">
               {navLinks.map((link) => (
                 <a
                   key={link.id}
                   href={`#${link.id}`}
                   onClick={(e) => scrollToSection(e, link.id)}
-                  className={`relative px-1 py-4 text-xs lg:text-sm font-bold tracking-widest transition-all duration-300 heading-font cursor-pointer ${
+                  className={`relative px-1 py-4 text-[10px] lg:text-xs font-bold tracking-widest transition-all duration-300 heading-font cursor-pointer ${
                     activeSection === link.id
                       ? 'text-yellow-400'
                       : 'text-gray-400 hover:text-purple-400'
@@ -136,16 +137,16 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
 
       <div 
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-[500px] opacity-100 py-8' : 'max-h-0 opacity-0'
+          isOpen ? 'max-h-[600px] opacity-100 py-8' : 'max-h-0 opacity-0'
         } bg-gray-950 border-t border-purple-900/30 shadow-2xl`}
       >
-        <div className="px-4 space-y-6 flex flex-col items-center">
+        <div className="px-4 space-y-4 flex flex-col items-center">
           {navLinks.map((link) => (
             <a
               key={link.id}
               href={`#${link.id}`}
               onClick={(e) => scrollToSection(e, link.id)}
-              className={`block text-2xl font-bold heading-font transition-colors ${
+              className={`block text-xl font-bold heading-font transition-colors ${
                 activeSection === link.id
                   ? 'text-yellow-400'
                   : 'text-gray-300 hover:text-white'

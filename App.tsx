@@ -6,6 +6,7 @@ import Team from './components/Team';
 import Instagram from './components/Instagram';
 import Contact from './components/Contact';
 import Gallery from './components/Gallery';
+import Sponsors from './components/Sponsors';
 import Footer from './components/Footer';
 
 export type Language = 'en' | 'tr';
@@ -42,8 +43,9 @@ const App: React.FC = () => {
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      // Don't change section if we are explicitly on contact or gallery page
-      if (window.location.hash === '#contact' || window.location.hash === '#gallery') return;
+      // Don't change section if we are explicitly on specialized pages
+      const specialized = ['#contact', '#gallery'];
+      if (specialized.includes(window.location.hash)) return;
 
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -53,7 +55,7 @@ const App: React.FC = () => {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = ['home', 'team', 'instagram'];
+    const sections = ['home', 'team', 'sponsors', 'instagram'];
     sections.forEach(id => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -86,8 +88,12 @@ const App: React.FC = () => {
             <section id="team" className="py-20 bg-gray-900/50 scroll-mt-20">
               <Team lang={lang} />
             </section>
+
+            <section id="sponsors" className="py-20 bg-gray-950 scroll-mt-20">
+              <Sponsors lang={lang} />
+            </section>
             
-            <section id="instagram" className="py-20 bg-gray-950 scroll-mt-20">
+            <section id="instagram" className="py-20 bg-gray-900/50 scroll-mt-20">
               <Instagram lang={lang} />
             </section>
           </>
