@@ -46,7 +46,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
         behavior: 'smooth'
       });
 
-      window.history.pushState(null, '', `#${id}`);
+      // window.location.hash ataması hashchange eventini tetikler
+      window.location.hash = id;
     }
   };
 
@@ -55,7 +56,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo Area */}
           <div className="flex-1 flex items-center">
             <a 
               href="#home" 
@@ -67,7 +67,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
             </a>
           </div>
           
-          {/* Desktop Navigation links - Center container */}
           <div className="hidden md:flex flex-[2] justify-center items-center h-full">
             <div className="flex space-x-8 lg:space-x-12 z-[110]">
               {navLinks.map((link) => (
@@ -90,9 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
             </div>
           </div>
 
-          {/* Right Section: Language Switcher & Mobile Toggle */}
           <div className="flex-1 flex justify-end items-center space-x-4">
-            {/* Language Switcher */}
             <div className="flex items-center space-x-2 bg-gray-900/50 rounded-full p-1 border border-white/10 heading-font text-[10px] md:text-xs">
               <button 
                 onClick={() => setLang('en')}
@@ -122,7 +119,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       <div 
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'

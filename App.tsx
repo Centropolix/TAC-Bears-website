@@ -13,19 +13,45 @@ const App: React.FC = () => {
   const [lang, setLang] = useState<Language>('en');
 
   useEffect(() => {
+    // URL hash'ine göre aktif bölümü güncelle
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
       setActiveSection(hash);
     };
 
     window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // Initial check
+    handleHashChange(); 
 
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    // Kaydırma sırasında hangi bölümün görünür olduğunu algılayan observer
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const sections = ['home', 'team', 'instagram'];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      observer.disconnect();
+    };
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-red-500 selection:text-white">
+    <div className="min-h-screen flex flex-col selection:bg-red-500 selection:text-white bg-gray-950">
       <Navbar activeSection={activeSection} lang={lang} setLang={setLang} />
       
       <main className="flex-grow">
