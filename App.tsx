@@ -10,10 +10,17 @@ export type Language = 'en' | 'tr';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
-  const [lang, setLang] = useState<Language>('en');
+  const [lang, setLang] = useState<Language>(() => {
+    const savedLang = localStorage.getItem('tac-bears-lang');
+    return (savedLang === 'tr' || savedLang === 'en') ? savedLang : 'tr';
+  });
 
   useEffect(() => {
-    // URL hash'ine göre aktif bölümü güncelle
+    localStorage.setItem('tac-bears-lang', lang);
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
       setActiveSection(hash);
@@ -22,7 +29,6 @@ const App: React.FC = () => {
     window.addEventListener('hashchange', handleHashChange);
     handleHashChange(); 
 
-    // Kaydırma sırasında hangi bölümün görünür olduğunu algılayan observer
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -70% 0px',
@@ -51,7 +57,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-red-500 selection:text-white bg-gray-950">
+    <div className="min-h-screen flex flex-col selection:bg-yellow-500 selection:text-gray-900 bg-gray-950 text-gray-100">
       <Navbar activeSection={activeSection} lang={lang} setLang={setLang} />
       
       <main className="flex-grow">

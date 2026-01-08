@@ -17,22 +17,22 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
       season: 'VEX Robotics Pushback Season 2025-2026.'
     },
     tr: {
-      tagline: 'Mühendislik gelecektir',
+      tagline: 'Mühendislik Gelecektir',
       rights: 'Tüm hakları saklıdır.',
       season: 'VEX Robotik Pushback Sezonu 2025-2026.'
     }
   };
 
   return (
-    <footer className="bg-gray-950 border-t border-gray-900 py-12">
+    <footer className="bg-gray-950 border-t border-purple-900/20 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
           <div>
             <div className="flex items-center space-x-2 mb-4 justify-center md:justify-start">
               <span className="text-xl font-bold text-purple-500 heading-font">TAC</span>
-              <span className="text-xl font-bold text-red-600 heading-font">BEARS</span>
+              <span className="text-xl font-bold text-yellow-500 heading-font">BEARS</span>
             </div>
-            <p className="text-gray-500 text-sm max-w-xs text-center md:text-left uppercase tracking-widest font-semibold">
+            <p className="text-purple-400/60 text-sm max-w-xs text-center md:text-left uppercase tracking-widest font-semibold">
               {translations[lang].tagline}
             </p>
           </div>
@@ -43,7 +43,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
                 href={igLink} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-500 hover:text-yellow-400 transition-colors"
                 aria-label="Instagram"
               >
                 <i className="fab fa-instagram text-xl"></i>
@@ -52,7 +52,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
                 href={youtubeLink} 
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-white transition-colors"
+                className="text-gray-500 hover:text-purple-500 transition-colors"
                 aria-label="YouTube"
               >
                 <i className="fab fa-youtube text-xl"></i>
@@ -60,7 +60,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             </div>
             <p className="text-gray-600 text-xs text-center md:text-right">
               &copy; {new Date().getFullYear()} TAC Bears. {translations[lang].rights}<br />
-              {translations[lang].season}
+              <span className="text-yellow-500/50">{translations[lang].season}</span>
             </p>
           </div>
         </div>

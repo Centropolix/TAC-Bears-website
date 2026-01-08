@@ -12,16 +12,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const translations = {
-    en: {
-      home: 'HOME',
-      team: 'OUR TEAM',
-      instagram: 'INSTAGRAM',
-    },
-    tr: {
-      home: 'ANA SAYFA',
-      team: 'EKİBİMİZ',
-      instagram: 'INSTAGRAM',
-    }
+    en: { home: 'HOME', team: 'OUR TEAM', instagram: 'INSTAGRAM' },
+    tr: { home: 'ANA SAYFA', team: 'EKİBİMİZ', instagram: 'INSTAGRAM' }
   };
 
   const navLinks = [
@@ -46,13 +38,12 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
         behavior: 'smooth'
       });
 
-      // window.location.hash ataması hashchange eventini tetikler
       window.location.hash = id;
     }
   };
 
   return (
-    <nav className="fixed w-full z-[100] bg-gray-950/90 backdrop-blur-lg border-b border-purple-900/30">
+    <nav className="fixed w-full z-[100] bg-gray-950/90 backdrop-blur-lg border-b border-purple-900/30 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
@@ -63,7 +54,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
               className="flex items-center space-x-2 z-[110]"
             >
               <span className="text-xl md:text-2xl font-bold tracking-tighter text-purple-500 heading-font">TAC</span>
-              <span className="text-xl md:text-2xl font-bold tracking-tighter text-red-600 heading-font">BEARS</span>
+              <span className="text-xl md:text-2xl font-bold tracking-tighter text-yellow-500 heading-font">BEARS</span>
             </a>
           </div>
           
@@ -76,12 +67,12 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
                   onClick={(e) => scrollToSection(e, link.id)}
                   className={`relative px-1 py-4 text-xs lg:text-sm font-bold tracking-widest transition-all duration-300 heading-font cursor-pointer ${
                     activeSection === link.id
-                      ? 'text-red-500'
+                      ? 'text-yellow-400'
                       : 'text-gray-400 hover:text-purple-400'
                   }`}
                 >
                   {link.name}
-                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-red-600 transition-transform duration-300 ${
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400 transition-transform duration-300 ${
                     activeSection === link.id ? 'scale-x-100' : 'scale-x-0'
                   }`}></span>
                 </a>
@@ -93,13 +84,13 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
             <div className="flex items-center space-x-2 bg-gray-900/50 rounded-full p-1 border border-white/10 heading-font text-[10px] md:text-xs">
               <button 
                 onClick={() => setLang('en')}
-                className={`px-3 py-1 rounded-full transition-all ${lang === 'en' ? 'bg-red-600 text-white font-bold' : 'text-gray-500 hover:text-gray-300'}`}
+                className={`px-3 py-1 rounded-full transition-all ${lang === 'en' ? 'bg-purple-600 text-white font-bold' : 'text-gray-500 hover:text-gray-300'}`}
               >
                 EN
               </button>
               <button 
                 onClick={() => setLang('tr')}
-                className={`px-3 py-1 rounded-full transition-all ${lang === 'tr' ? 'bg-red-600 text-white font-bold' : 'text-gray-500 hover:text-gray-300'}`}
+                className={`px-3 py-1 rounded-full transition-all ${lang === 'tr' ? 'bg-purple-600 text-white font-bold' : 'text-gray-500 hover:text-gray-300'}`}
               >
                 TR
               </button>
@@ -108,8 +99,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
             <div className="md:hidden z-[110]">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 transition-colors"
-                aria-expanded={isOpen}
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-yellow-400 hover:bg-gray-800 transition-colors"
               >
                 <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
               </button>
@@ -132,7 +122,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
               onClick={(e) => scrollToSection(e, link.id)}
               className={`block text-2xl font-bold heading-font transition-colors ${
                 activeSection === link.id
-                  ? 'text-red-500'
+                  ? 'text-yellow-400'
                   : 'text-gray-300 hover:text-white'
               }`}
             >
