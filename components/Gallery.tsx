@@ -9,13 +9,13 @@ interface GalleryProps {
 const Gallery: React.FC<GalleryProps> = ({ lang }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Örnek galeri görselleri (Takım fotoğraflarınızla değiştirebilirsiniz)
+  // Paylaşılan Google Drive görselleri ve örnek görseller
   const images = [
+    { url: "https://lh3.googleusercontent.com/d/1WwikogAwBAD4B6ZjstWhFneQDpGvxaDw", title: "Robot Structure" },
+    { url: "https://lh3.googleusercontent.com/d/1kwGPPIZcmcdimsCG0F8GNZA8PInk5une", title: "Technical Setup" },
     { url: "https://lh3.googleusercontent.com/d/1YP_IntmX1gCb2aWqT3Lf3cHtQyEH-1VG", title: "Team" },
     { url: "https://images.unsplash.com/photo-1561557944-6e7860d1a7eb?q=80&w=1200", title: "Robot Detail" },
     { url: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=1200", title: "Workshop" },
-    { url: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200", title: "Collaboration" },
-    { url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1200", title: "Testing" },
     { url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200", title: "Competition" },
   ];
 
@@ -61,6 +61,7 @@ const Gallery: React.FC<GalleryProps> = ({ lang }) => {
                 src={img.url} 
                 alt={img.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="absolute bottom-4 left-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
