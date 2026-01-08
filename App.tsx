@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Team from './components/Team';
+import Timeline from './components/Timeline';
+import Awards from './components/Awards';
 import Instagram from './components/Instagram';
 import Contact from './components/Contact';
 import Gallery from './components/Gallery';
@@ -27,7 +29,6 @@ const App: React.FC = () => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
       setActiveSection(hash);
-      // Scroll to top if switching views
       if (hash === 'contact' || hash === 'home' || hash === 'gallery') {
         window.scrollTo(0, 0);
       }
@@ -43,7 +44,6 @@ const App: React.FC = () => {
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      // Don't change section if we are explicitly on specialized pages
       const specialized = ['#contact', '#gallery'];
       if (specialized.includes(window.location.hash)) return;
 
@@ -55,7 +55,7 @@ const App: React.FC = () => {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = ['home', 'team', 'sponsors', 'instagram'];
+    const sections = ['home', 'team', 'awards', 'sponsors', 'timeline', 'instagram'];
     sections.forEach(id => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -89,8 +89,16 @@ const App: React.FC = () => {
               <Team lang={lang} />
             </section>
 
-            <section id="sponsors" className="py-20 bg-gray-950 scroll-mt-20">
+            <section id="awards" className="py-20 bg-gray-950 scroll-mt-20">
+              <Awards lang={lang} />
+            </section>
+
+            <section id="sponsors" className="py-20 bg-gray-900/50 scroll-mt-20">
               <Sponsors lang={lang} />
+            </section>
+
+            <section id="timeline" className="py-20 bg-gray-950 scroll-mt-20">
+              <Timeline lang={lang} />
             </section>
             
             <section id="instagram" className="py-20 bg-gray-900/50 scroll-mt-20">

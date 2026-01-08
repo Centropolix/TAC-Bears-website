@@ -17,7 +17,8 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
       season: 'VEX Robotics Pushback Season 2025-2026.',
       contact: 'CONTACT',
       gallery: 'GALLERY',
-      sponsors: 'SPONSORS'
+      sponsors: 'SPONSORS',
+      awards: 'AWARDS'
     },
     tr: {
       tagline: 'Mühendislik Gelecektir',
@@ -25,7 +26,8 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
       season: 'VEX Robotik Pushback Sezonu 2025-2026.',
       contact: 'İLETİŞİM',
       gallery: 'GALERİ',
-      sponsors: 'SPONSORLAR'
+      sponsors: 'SPONSORLAR',
+      awards: 'ÖDÜLLER'
     }
   };
 
@@ -46,19 +48,25 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
           <div className="flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0 text-center">
             <a 
               href="#gallery" 
-              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-xs transition-colors"
+              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-[10px] uppercase transition-colors"
             >
               {translations[lang].gallery}
             </a>
             <a 
+              href="#awards" 
+              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-[10px] uppercase transition-colors"
+            >
+              {translations[lang].awards}
+            </a>
+            <a 
               href="#sponsors" 
-              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-xs transition-colors"
+              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-[10px] uppercase transition-colors"
             >
               {translations[lang].sponsors}
             </a>
             <a 
               href="#contact" 
-              className="text-yellow-500 hover:text-white font-bold heading-font tracking-widest text-xs transition-colors"
+              className="text-yellow-500 hover:text-white font-bold heading-font tracking-widest text-[10px] uppercase transition-colors"
             >
               {translations[lang].contact}
             </a>
