@@ -10,20 +10,10 @@ export type Language = 'en' | 'tr';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
-  
-  // Tarayıcı hafızasından dili al veya varsayılan olarak 'en' yap
-  const [lang, setLang] = useState<Language>(() => {
-    const savedLang = localStorage.getItem('tac-bears-lang');
-    return (savedLang === 'tr' || savedLang === 'en') ? savedLang : 'en';
-  });
+  const [lang, setLang] = useState<Language>('en');
 
   useEffect(() => {
-    // Dil değiştiğinde hafızaya kaydet
-    localStorage.setItem('tac-bears-lang', lang);
-    document.documentElement.lang = lang;
-  }, [lang]);
-
-  useEffect(() => {
+    // URL hash'ine göre aktif bölümü güncelle
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
       setActiveSection(hash);
@@ -32,6 +22,7 @@ const App: React.FC = () => {
     window.addEventListener('hashchange', handleHashChange);
     handleHashChange(); 
 
+    // Kaydırma sırasında hangi bölümün görünür olduğunu algılayan observer
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -70% 0px',
