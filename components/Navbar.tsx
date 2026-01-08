@@ -12,21 +12,46 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const translations = {
-    en: { home: 'HOME', team: 'OUR TEAM', instagram: 'INSTAGRAM' },
-    tr: { home: 'ANA SAYFA', team: 'EKİBİMİZ', instagram: 'INSTAGRAM' }
+    en: { home: 'HOME', team: 'OUR TEAM', instagram: 'INSTAGRAM', contact: 'CONTACT' },
+    tr: { home: 'ANA SAYFA', team: 'EKİBİMİZ', instagram: 'INSTAGRAM', contact: 'İLETİŞİM' }
   };
 
   const navLinks = [
     { name: translations[lang].home, id: 'home' },
     { name: translations[lang].team, id: 'team' },
     { name: translations[lang].instagram, id: 'instagram' },
+    { name: translations[lang].contact, id: 'contact' },
   ];
 
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
+    setIsOpen(false);
+    
+    if (id === 'contact') {
+      window.location.hash = 'contact';
+      return;
+    }
+
+    // If we are coming back from contact page
+    if (window.location.hash === '#contact') {
+      window.location.hash = id;
+      // Small timeout to allow render before scroll
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const offset = 80;
+          const bodyRect = document.body.getBoundingClientRect().top;
+          const elementRect = element.getBoundingClientRect().top;
+          const elementPosition = elementRect - bodyRect;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({ top: id === 'home' ? 0 : offsetPosition, behavior: 'smooth' });
+        }
+      }, 50);
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
-      setIsOpen(false);
       const offset = 80;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;

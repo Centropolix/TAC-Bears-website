@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Team from './components/Team';
 import Instagram from './components/Instagram';
+import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 export type Language = 'en' | 'tr';
@@ -24,6 +25,10 @@ const App: React.FC = () => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
       setActiveSection(hash);
+      // Scroll to top if switching views
+      if (hash === 'contact' || hash === 'home') {
+        window.scrollTo(0, 0);
+      }
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -36,6 +41,9 @@ const App: React.FC = () => {
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      // Don't change section if we are explicitly on contact page
+      if (window.location.hash === '#contact') return;
+
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           setActiveSection(entry.target.id);
@@ -56,22 +64,30 @@ const App: React.FC = () => {
     };
   }, []);
 
+  const isContactPage = activeSection === 'contact';
+
   return (
     <div className="min-h-screen flex flex-col selection:bg-yellow-500 selection:text-gray-900 bg-gray-950 text-gray-100">
       <Navbar activeSection={activeSection} lang={lang} setLang={setLang} />
       
       <main className="flex-grow">
-        <section id="home" className="scroll-mt-20">
-          <Hero lang={lang} />
-        </section>
-        
-        <section id="team" className="py-20 bg-gray-900/50 scroll-mt-20">
-          <Team lang={lang} />
-        </section>
-        
-        <section id="instagram" className="py-20 bg-gray-950 scroll-mt-20">
-          <Instagram lang={lang} />
-        </section>
+        {isContactPage ? (
+          <Contact lang={lang} />
+        ) : (
+          <>
+            <section id="home" className="scroll-mt-20">
+              <Hero lang={lang} />
+            </section>
+            
+            <section id="team" className="py-20 bg-gray-900/50 scroll-mt-20">
+              <Team lang={lang} />
+            </section>
+            
+            <section id="instagram" className="py-20 bg-gray-950 scroll-mt-20">
+              <Instagram lang={lang} />
+            </section>
+          </>
+        )}
       </main>
 
       <Footer lang={lang} />
