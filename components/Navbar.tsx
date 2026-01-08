@@ -26,45 +26,33 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
     { name: translations[lang].contact, id: 'contact' },
   ];
 
+  const isActive = (id: string) => {
+    return activeSection === id;
+  };
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setIsOpen(false);
     
-    if (id === 'contact' || id === 'gallery') {
-      window.location.hash = id;
-      return;
-    }
+    // URL'deki hash'i güncelle
+    window.location.hash = id;
 
-    if (window.location.hash === '#contact' || window.location.hash === '#gallery') {
-      window.location.hash = id;
-      setTimeout(() => {
-        const element = document.getElementById(id);
-        if (element) {
-          const offset = 80;
-          const bodyRect = document.body.getBoundingClientRect().top;
-          const elementRect = element.getBoundingClientRect().top;
-          const elementPosition = elementRect - bodyRect;
-          const offsetPosition = elementPosition - offset;
-          window.scrollTo({ top: id === 'home' ? 0 : offsetPosition, behavior: 'smooth' });
-        }
-      }, 50);
-      return;
-    }
+    // Eğer ana sayfa bölümlerinden biriyse kaydır
+    const mainSections = ['home', 'team', 'awards', 'sponsors', 'timeline', 'instagram'];
+    if (mainSections.includes(id)) {
+      const element = document.getElementById(id);
+      if (element) {
+        const offset = 80;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
 
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: id === 'home' ? 0 : offsetPosition,
-        behavior: 'smooth'
-      });
-
-      window.location.hash = id;
+        window.scrollTo({
+          top: id === 'home' ? 0 : offsetPosition,
+          behavior: 'smooth'
+        });
+      }
     }
   };
 
@@ -92,14 +80,14 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
                   href={`#${link.id}`}
                   onClick={(e) => scrollToSection(e, link.id)}
                   className={`relative px-1 py-4 text-[9px] lg:text-[11px] font-bold tracking-widest transition-all duration-300 heading-font cursor-pointer ${
-                    activeSection === link.id
+                    isActive(link.id)
                       ? 'text-yellow-400'
                       : 'text-gray-400 hover:text-purple-400'
                   }`}
                 >
                   {link.name}
                   <span className={`absolute bottom-0 left-0 w-full h-0.5 bg-yellow-400 transition-transform duration-300 ${
-                    activeSection === link.id ? 'scale-x-100' : 'scale-x-0'
+                    isActive(link.id) ? 'scale-x-100' : 'scale-x-0'
                   }`}></span>
                 </a>
               ))}
@@ -147,7 +135,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
               href={`#${link.id}`}
               onClick={(e) => scrollToSection(e, link.id)}
               className={`block text-lg font-bold heading-font transition-colors ${
-                activeSection === link.id
+                isActive(link.id)
                   ? 'text-yellow-400'
                   : 'text-gray-300 hover:text-white'
               }`}

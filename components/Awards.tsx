@@ -9,21 +9,39 @@ interface AwardsProps {
 const Awards: React.FC<AwardsProps> = ({ lang }) => {
   const awards = [
     {
-      year: '2024',
-      title: { en: 'Excellence Award', tr: 'Mükemmellik Ödülü' },
-      event: { en: 'VEX Signature Event', tr: 'VEX İmza Etkinliği' },
-      icon: 'fa-trophy'
-    },
-    {
-      year: '2024',
-      title: { en: 'Design Award', tr: 'Tasarım Ödülü' },
-      event: { en: 'Regional Qualifiers', tr: 'Bölgesel Elemeler' },
-      icon: 'fa-drafting-compass'
+      year: '2022',
+      title: { 
+        en: 'Tournament Finalists (2nd Place)', 
+        tr: 'Turnuva Finalisti (2.lik)' 
+      },
+      event: { 
+        en: 'Our very first tournament experience at VEX Tipping Point, where we reached the finals.', 
+        tr: 'İlk turnuva deneyimimiz olan VEX Tipping Point\'te finale yükselerek büyük bir başarıya imza attık.' 
+      },
+      icon: 'fa-medal'
     },
     {
       year: '2023',
-      title: { en: 'Judges Award', tr: 'Jüri Özel Ödülü' },
-      event: { en: 'National Championship', tr: 'Ulusal Şampiyona' },
+      title: { 
+        en: 'Innovate Award', 
+        tr: 'Innovate Ödülü' 
+      },
+      event: { 
+        en: 'Recognized for our innovative mechanical solutions during the VEX Spin Up season.', 
+        tr: 'VEX Spin Up sezonunda geliştirdiğimiz yenilikçi mekanik çözümlerle bu prestijli ödülü kazandık.' 
+      },
+      icon: 'fa-lightbulb'
+    },
+    {
+      year: '2025',
+      title: { 
+        en: 'Judges Award', 
+        tr: 'Jüri Özel Ödülü' 
+      },
+      event: { 
+        en: 'Recognized by the judges for our team spirit and exemplary engineering process in the Pushback season.', 
+        tr: 'Pushback sezonunda takım ruhumuz ve örnek mühendislik sürecimiz nedeniyle jüri tarafından ödüle layık görüldük.' 
+      },
       icon: 'fa-award'
     }
   ];
@@ -57,7 +75,7 @@ const Awards: React.FC<AwardsProps> = ({ lang }) => {
         {awards.map((award, index) => (
           <div 
             key={index} 
-            className="group relative bg-gray-900/50 border border-purple-900/30 p-8 rounded-3xl hover:border-yellow-500/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+            className="group relative bg-gray-900/50 border border-purple-900/30 p-8 rounded-3xl hover:border-yellow-500/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col items-center"
           >
             {/* Arka plan glow efekti */}
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-600/10 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-colors"></div>
@@ -71,11 +89,11 @@ const Awards: React.FC<AwardsProps> = ({ lang }) => {
                 {award.year}
               </span>
               
-              <h3 className="text-xl font-bold text-white mb-3 heading-font group-hover:text-yellow-500 transition-colors">
+              <h3 className="text-xl font-bold text-white mb-3 heading-font group-hover:text-yellow-500 transition-colors min-h-[3rem] flex items-center justify-center">
                 {award.title[lang]}
               </h3>
               
-              <p className="text-gray-500 text-sm italic">
+              <p className="text-gray-500 text-sm leading-relaxed">
                 {award.event[lang]}
               </p>
             </div>

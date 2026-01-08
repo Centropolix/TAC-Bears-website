@@ -16,7 +16,8 @@ const Timeline: React.FC<TimelineProps> = ({ lang }) => {
         tr: 'TAC Bears\'ın kuruluşu. VEX evrenine ilk adım.' 
       },
       icon: 'fa-seedling',
-      color: 'bg-purple-500'
+      color: 'bg-purple-500',
+      image: 'https://lh3.googleusercontent.com/d/16D_zTe3NJ1mL9mm2i335ZeakhHpadZH3'
     },
     {
       year: '2023',
@@ -26,7 +27,8 @@ const Timeline: React.FC<TimelineProps> = ({ lang }) => {
         tr: 'İlk ulusal turnuvalar ve ekibin büyümesi.' 
       },
       icon: 'fa-rocket',
-      color: 'bg-blue-500'
+      color: 'bg-blue-500',
+      image: 'https://lh3.googleusercontent.com/d/1IssDxu6sq0H76ZC7rJ0qMYfFr-4ADG_j'
     },
     {
       year: '2024',
@@ -36,7 +38,8 @@ const Timeline: React.FC<TimelineProps> = ({ lang }) => {
         tr: 'Signature etkinliklerinde Mükemmellik ve Tasarım ödülleri.' 
       },
       icon: 'fa-trophy',
-      color: 'bg-yellow-500'
+      color: 'bg-yellow-500',
+      image: 'https://lh3.googleusercontent.com/d/1VdzkQtwfbCa5LbzrgB7AvmR-MjipcEoM'
     },
     {
       year: '2025',
@@ -50,10 +53,10 @@ const Timeline: React.FC<TimelineProps> = ({ lang }) => {
     },
     {
       year: '2026',
-      title: { en: 'Future Horizons', tr: 'Gelecek Ufuklar' },
+      title: { en: 'Beyond Boundaries', tr: 'Sınırların Ötesi' },
       desc: { 
-        en: 'Aiming for the World Championships and advanced AI.', 
-        tr: 'Dünya Şampiyonası ve ileri AI hedefleri.' 
+        en: 'Defining the future of robotics through relentless innovation and visionary engineering.', 
+        tr: 'Durmak bilmeyen bir inovasyon ruhu ve vizyoner mühendislikle robotik dünyasının geleceğini biz yazıyoruz.' 
       },
       icon: 'fa-earth-americas',
       color: 'bg-yellow-600'
@@ -80,7 +83,7 @@ const Timeline: React.FC<TimelineProps> = ({ lang }) => {
       <div className="relative mt-24 mb-24">
         {/* Horizontal Container with Scroll */}
         <div className="hide-scrollbar overflow-x-auto overflow-y-visible cursor-grab active:cursor-grabbing pb-12 pt-12">
-          <div className="flex min-w-[1200px] lg:min-w-full justify-between items-center relative px-10 h-[400px]">
+          <div className="flex min-w-[1200px] lg:min-w-full justify-between items-center relative px-10 h-[500px]">
             
             {/* Background Track Line */}
             <div className="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-purple-900 via-yellow-500/50 to-purple-900 -translate-y-1/2 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.2)]"></div>
@@ -93,18 +96,31 @@ const Timeline: React.FC<TimelineProps> = ({ lang }) => {
 
                 {/* Event Card - Alternating Top/Bottom */}
                 <div 
-                  className={`absolute w-64 p-5 rounded-2xl bg-gray-900/60 backdrop-blur-md border border-purple-500/20 shadow-xl transition-all duration-500 hover:scale-105 hover:bg-gray-800/80 hover:border-yellow-500/40 group z-20 
+                  className={`absolute w-72 p-0 rounded-2xl bg-gray-900/60 backdrop-blur-md border border-purple-500/20 shadow-xl transition-all duration-500 hover:scale-105 hover:bg-gray-800/80 hover:border-yellow-500/40 group z-20 overflow-hidden
                   ${index % 2 === 0 ? 'bottom-[calc(50%+4rem)]' : 'top-[calc(50%+4rem)]'}`}
                 >
-                  <div className={`absolute top-0 left-0 w-full h-1 rounded-t-2xl ${event.color} opacity-50 group-hover:opacity-100 transition-opacity`}></div>
-                  
-                  <span className="text-yellow-500 font-black heading-font text-xl mb-1 block">{event.year}</span>
-                  <h3 className="text-sm font-bold text-white mb-2 heading-font uppercase tracking-wider group-hover:text-purple-400 transition-colors">
-                    {event.title[lang]}
-                  </h3>
-                  <p className="text-gray-400 text-xs leading-relaxed">
-                    {event.desc[lang]}
-                  </p>
+                  {/* Photo Section */}
+                  {event.image && (
+                    <div className="w-full h-32 overflow-hidden border-b border-purple-500/10">
+                      <img 
+                        src={event.image} 
+                        alt={event.year} 
+                        className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                      />
+                    </div>
+                  )}
+
+                  <div className="p-5">
+                    <div className={`absolute top-0 left-0 w-full h-1 rounded-t-2xl ${event.color} opacity-50 group-hover:opacity-100 transition-opacity`}></div>
+                    
+                    <span className="text-yellow-500 font-black heading-font text-xl mb-1 block">{event.year}</span>
+                    <h3 className="text-sm font-bold text-white mb-2 heading-font uppercase tracking-wider group-hover:text-purple-400 transition-colors">
+                      {event.title[lang]}
+                    </h3>
+                    <p className="text-gray-400 text-xs leading-relaxed">
+                      {event.desc[lang]}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Main Marker Point */}

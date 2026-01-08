@@ -14,20 +14,12 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
     en: {
       tagline: 'Engineering is the future',
       rights: 'All rights reserved.',
-      season: 'VEX Robotics Pushback Season 2025-2026.',
-      contact: 'CONTACT',
-      gallery: 'GALLERY',
-      sponsors: 'SPONSORS',
-      awards: 'AWARDS'
+      season: 'VEX Robotics Pushback Season 2025-2026.'
     },
     tr: {
       tagline: 'Mühendislik Gelecektir',
       rights: 'Tüm hakları saklıdır.',
-      season: 'VEX Robotik Pushback Sezonu 2025-2026.',
-      contact: 'İLETİŞİM',
-      gallery: 'GALERİ',
-      sponsors: 'SPONSORLAR',
-      awards: 'ÖDÜLLER'
+      season: 'VEX Robotik Pushback Sezonu 2025-2026.'
     }
   };
 
@@ -43,33 +35,6 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             <p className="text-purple-400/60 text-sm max-w-xs text-center md:text-left uppercase tracking-widest font-semibold">
               {translations[lang].tagline}
             </p>
-          </div>
-
-          <div className="flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0 text-center">
-            <a 
-              href="#gallery" 
-              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-[10px] uppercase transition-colors"
-            >
-              {translations[lang].gallery}
-            </a>
-            <a 
-              href="#awards" 
-              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-[10px] uppercase transition-colors"
-            >
-              {translations[lang].awards}
-            </a>
-            <a 
-              href="#sponsors" 
-              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-[10px] uppercase transition-colors"
-            >
-              {translations[lang].sponsors}
-            </a>
-            <a 
-              href="#contact" 
-              className="text-yellow-500 hover:text-white font-bold heading-font tracking-widest text-[10px] uppercase transition-colors"
-            >
-              {translations[lang].contact}
-            </a>
           </div>
 
           <div className="flex flex-col items-center md:items-end">
@@ -98,6 +63,13 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
               <span className="text-yellow-500/50">{translations[lang].season}</span>
             </p>
           </div>
+        </div>
+
+        {/* Made by Section */}
+        <div className="mt-12 pt-8 border-t border-white/5 text-center">
+          <p className="text-[10px] uppercase tracking-[0.25em] text-gray-500 font-semibold opacity-70 hover:opacity-100 hover:text-purple-400 transition-all duration-500 cursor-default">
+            made by Kadir Ceylan Tac'28
+          </p>
         </div>
       </div>
     </footer>

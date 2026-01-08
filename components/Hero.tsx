@@ -11,8 +11,8 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   const bgImageUrl = "https://lh3.googleusercontent.com/d/1YP_IntmX1gCb2aWqT3Lf3cHtQyEH-1VG";
 
   const translations = {
-    en: { season: 'VEX Pushback 2025 - 2026 Season', robotics: 'ROBOTICS' },
-    tr: { season: 'VEX Pushback 2025 - 2026 Sezonu', robotics: 'ROBOTİK' }
+    en: { season: 'VEX Pushback 2025 - 2026 Season' },
+    tr: { season: 'VEX Pushback 2025 - 2026 Sezonu' }
   };
 
   return (
@@ -41,14 +41,10 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           <h1 className="text-6xl md:text-9xl font-black tracking-tighter drop-shadow-[0_10px_10px_rgba(0,0,0,0.5)]">
             <span className="text-purple-500">TAC</span> <span className="text-yellow-500">BEARS</span>
           </h1>
-          
-          <div className="absolute -bottom-4 md:-bottom-6 right-0 text-sm md:text-2xl font-bold text-purple-400 heading-font tracking-[0.3em] uppercase opacity-90 drop-shadow-md">
-            {translations[lang].robotics}
-          </div>
         </div>
       </div>
-
-      <div className="absolute bottom-0 left-0 w-full h-1/2 bg-[linear-gradient(to_right,#312e81_1px,transparent_1px),linear-gradient(to_bottom,#312e81_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_100%,#000_70%,transparent_100%)] opacity-30 z-2"></div>
+      
+      {/* Alt kısımdaki grid deseni "bi kısmı kaldır" geri bildirimi doğrultusunda kaldırıldı */}
     </div>
   );
 };
