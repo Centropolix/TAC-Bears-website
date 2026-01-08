@@ -12,13 +12,14 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const translations = {
-    en: { home: 'HOME', team: 'OUR TEAM', instagram: 'INSTAGRAM', contact: 'CONTACT' },
-    tr: { home: 'ANA SAYFA', team: 'EKİBİMİZ', instagram: 'INSTAGRAM', contact: 'İLETİŞİM' }
+    en: { home: 'HOME', team: 'OUR TEAM', instagram: 'INSTAGRAM', contact: 'CONTACT', gallery: 'GALLERY' },
+    tr: { home: 'ANA SAYFA', team: 'EKİBİMİZ', instagram: 'INSTAGRAM', contact: 'İLETİŞİM', gallery: 'GALERİ' }
   };
 
   const navLinks = [
     { name: translations[lang].home, id: 'home' },
     { name: translations[lang].team, id: 'team' },
+    { name: translations[lang].gallery, id: 'gallery' },
     { name: translations[lang].instagram, id: 'instagram' },
     { name: translations[lang].contact, id: 'contact' },
   ];
@@ -27,15 +28,14 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
     e.preventDefault();
     setIsOpen(false);
     
-    if (id === 'contact') {
-      window.location.hash = 'contact';
+    if (id === 'contact' || id === 'gallery') {
+      window.location.hash = id;
       return;
     }
 
-    // If we are coming back from contact page
-    if (window.location.hash === '#contact') {
+    // If we are coming back from specialized page
+    if (window.location.hash === '#contact' || window.location.hash === '#gallery') {
       window.location.hash = id;
-      // Small timeout to allow render before scroll
       setTimeout(() => {
         const element = document.getElementById(id);
         if (element) {
@@ -83,8 +83,8 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
             </a>
           </div>
           
-          <div className="hidden md:flex flex-[2] justify-center items-center h-full">
-            <div className="flex space-x-8 lg:space-x-12 z-[110]">
+          <div className="hidden md:flex flex-[3] justify-center items-center h-full">
+            <div className="flex space-x-6 lg:space-x-10 z-[110]">
               {navLinks.map((link) => (
                 <a
                   key={link.id}
@@ -136,10 +136,10 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
 
       <div 
         className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          isOpen ? 'max-h-[500px] opacity-100 py-8' : 'max-h-0 opacity-0'
         } bg-gray-950 border-t border-purple-900/30 shadow-2xl`}
       >
-        <div className="px-4 py-8 space-y-6 flex flex-col items-center">
+        <div className="px-4 space-y-6 flex flex-col items-center">
           {navLinks.map((link) => (
             <a
               key={link.id}

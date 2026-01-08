@@ -15,13 +15,15 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
       tagline: 'Engineering is the future',
       rights: 'All rights reserved.',
       season: 'VEX Robotics Pushback Season 2025-2026.',
-      contact: 'CONTACT'
+      contact: 'CONTACT',
+      gallery: 'GALLERY'
     },
     tr: {
       tagline: 'Mühendislik Gelecektir',
       rights: 'Tüm hakları saklıdır.',
       season: 'VEX Robotik Pushback Sezonu 2025-2026.',
-      contact: 'İLETİŞİM'
+      contact: 'İLETİŞİM',
+      gallery: 'GALERİ'
     }
   };
 
@@ -39,10 +41,16 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
             </p>
           </div>
 
-          <div className="flex flex-col items-center md:items-center">
+          <div className="flex flex-col md:flex-row items-center md:space-x-8 space-y-4 md:space-y-0">
+            <a 
+              href="#gallery" 
+              className="text-gray-400 hover:text-yellow-500 font-bold heading-font tracking-widest text-sm transition-colors"
+            >
+              {translations[lang].gallery}
+            </a>
             <a 
               href="#contact" 
-              className="text-yellow-500 hover:text-white font-bold heading-font tracking-widest text-lg transition-colors mb-4 md:mb-0"
+              className="text-yellow-500 hover:text-white font-bold heading-font tracking-widest text-sm transition-colors"
             >
               {translations[lang].contact}
             </a>

@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import Team from './components/Team';
 import Instagram from './components/Instagram';
 import Contact from './components/Contact';
+import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 
 export type Language = 'en' | 'tr';
@@ -26,7 +27,7 @@ const App: React.FC = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
       setActiveSection(hash);
       // Scroll to top if switching views
-      if (hash === 'contact' || hash === 'home') {
+      if (hash === 'contact' || hash === 'home' || hash === 'gallery') {
         window.scrollTo(0, 0);
       }
     };
@@ -41,8 +42,8 @@ const App: React.FC = () => {
     };
 
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
-      // Don't change section if we are explicitly on contact page
-      if (window.location.hash === '#contact') return;
+      // Don't change section if we are explicitly on contact or gallery page
+      if (window.location.hash === '#contact' || window.location.hash === '#gallery') return;
 
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -65,6 +66,7 @@ const App: React.FC = () => {
   }, []);
 
   const isContactPage = activeSection === 'contact';
+  const isGalleryPage = activeSection === 'gallery';
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-yellow-500 selection:text-gray-900 bg-gray-950 text-gray-100">
@@ -73,6 +75,8 @@ const App: React.FC = () => {
       <main className="flex-grow">
         {isContactPage ? (
           <Contact lang={lang} />
+        ) : isGalleryPage ? (
+          <Gallery lang={lang} />
         ) : (
           <>
             <section id="home" className="scroll-mt-20">
