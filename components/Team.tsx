@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Language } from '../App';
 
 interface TeamProps {
@@ -7,6 +7,8 @@ interface TeamProps {
 }
 
 const Team: React.FC<TeamProps> = ({ lang }) => {
+  const [imgLoaded, setImgLoaded] = useState(false);
+
   const translations = {
     en: {
       title: 'Our',
@@ -24,7 +26,8 @@ const Team: React.FC<TeamProps> = ({ lang }) => {
     }
   };
 
-  const teamPhotoUrl = "https://lh3.googleusercontent.com/u/0/d/1YP_IntmX1gCb2aWqT3Lf3cHtQyEH-1VG=w1600";
+  // Google Drive Direct Download/View Link formatı
+  const teamPhotoUrl = "https://drive.google.com/uc?export=view&id=1YP_IntmX1gCb2aWqT3Lf3cHtQyEH-1VG";
   
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,12 +41,19 @@ const Team: React.FC<TeamProps> = ({ lang }) => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 group">
           <div className="relative overflow-hidden rounded-2xl border-2 border-purple-900/20 bg-gray-900 aspect-video shadow-2xl">
+             {!imgLoaded && (
+               <div className="absolute inset-0 flex items-center justify-center bg-gray-900">
+                 <i className="fas fa-spinner fa-spin text-red-600 text-3xl"></i>
+               </div>
+             )}
              <img 
                src={teamPhotoUrl} 
                alt="TAC Bears Team Photo"
-               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+               onLoad={() => setImgLoaded(true)}
+               className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-110 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
                onError={(e) => {
                  (e.target as HTMLImageElement).src = "https://picsum.photos/1200/800?grayscale&blur=2";
+                 setImgLoaded(true);
                }}
              />
              <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60"></div>
