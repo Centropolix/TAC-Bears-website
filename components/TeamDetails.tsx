@@ -13,7 +13,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang }) => {
 
   const members = [
     { 
-      name: 'Kadir Ceylan', 
+      name: 'Can Gökçe Öner', 
       role: { en: 'Team Leader', tr: 'Takım Lideri' },
       roleTag: 'LEADER',
       image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop',
@@ -21,7 +21,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang }) => {
       border: 'border-yellow-500/30'
     },
     { 
-      name: 'Ali Yılmaz', 
+      name: 'Turhan Uygur', 
       role: { en: 'Primary Driver', tr: 'Ana Sürücü' },
       roleTag: 'DRIVER',
       image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop',
@@ -29,10 +29,10 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang }) => {
       border: 'border-blue-500/30'
     },
     { 
-      name: 'Ayşe Demir', 
+      name: 'Kadir Ceylan', 
       role: { en: 'Head Mechanic', tr: 'Baş Mekanik' },
       roleTag: 'MECHANIC',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
       color: 'from-orange-400 to-red-600',
       border: 'border-orange-500/30'
     }
