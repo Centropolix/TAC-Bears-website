@@ -4,12 +4,12 @@ import { Language } from '../App';
 
 interface GalleryProps {
   lang: Language;
+  onNavigate: (section: string) => void;
 }
 
-const Gallery: React.FC<GalleryProps> = ({ lang }) => {
+const Gallery: React.FC<GalleryProps> = ({ lang, onNavigate }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Paylaşılan Google Drive görselleri ve örnek görseller
   const images = [
     { url: "https://lh3.googleusercontent.com/d/1WwikogAwBAD4B6ZjstWhFneQDpGvxaDw", title: "Robot Structure" },
     { url: "https://lh3.googleusercontent.com/d/1kwGPPIZcmcdimsCG0F8GNZA8PInk5une", title: "Technical Setup" },
@@ -49,7 +49,6 @@ const Gallery: React.FC<GalleryProps> = ({ lang }) => {
           <div className="w-24 h-1 bg-purple-600 mx-auto rounded-full"></div>
         </div>
 
-        {/* Galeri Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {images.map((img, index) => (
             <div 
@@ -64,9 +63,7 @@ const Gallery: React.FC<GalleryProps> = ({ lang }) => {
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute bottom-4 left-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 opacity-0 group-hover:opacity-100">
-                <p className="text-yellow-400 font-bold heading-font text-sm uppercase tracking-widest">{img.title}</p>
-              </div>
+              
               <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-purple-600/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-purple-500/30">
                 <i className="fas fa-search-plus text-white"></i>
               </div>
@@ -77,6 +74,10 @@ const Gallery: React.FC<GalleryProps> = ({ lang }) => {
         <div className="mt-20 text-center">
           <a 
             href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('home');
+            }}
             className="inline-flex items-center space-x-3 text-gray-400 hover:text-white transition-colors heading-font uppercase tracking-widest"
           >
             <i className="fas fa-arrow-left"></i>
@@ -85,7 +86,6 @@ const Gallery: React.FC<GalleryProps> = ({ lang }) => {
         </div>
       </div>
 
-      {/* Işık Kutusu (Lightbox) */}
       {selectedImage && (
         <div 
           className="fixed inset-0 z-[200] bg-gray-950/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"

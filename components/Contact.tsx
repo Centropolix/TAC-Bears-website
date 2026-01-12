@@ -4,10 +4,11 @@ import { Language } from '../App';
 
 interface ContactProps {
   lang: Language;
+  onNavigate: (section: string) => void;
 }
 
-const Contact: React.FC<ContactProps> = ({ lang }) => {
-  const email = "tatokmak28@my.tac.k12.tr"; // Güncellenen e-posta adresi
+const Contact: React.FC<ContactProps> = ({ lang, onNavigate }) => {
+  const email = "tatokmak28@my.tac.k12.tr"; 
 
   const translations = {
     en: {
@@ -59,6 +60,10 @@ const Contact: React.FC<ContactProps> = ({ lang }) => {
             <div className="mt-12">
               <a 
                 href="#home"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onNavigate('home');
+                }}
                 className="text-gray-500 hover:text-white transition-colors uppercase tracking-widest text-sm font-bold flex items-center justify-center space-x-2"
               >
                 <i className="fas fa-arrow-left"></i>

@@ -9,16 +9,40 @@ interface AwardsProps {
 const Awards: React.FC<AwardsProps> = ({ lang }) => {
   const awards = [
     {
-      year: '2022',
+      year: '2025',
       title: { 
-        en: 'Tournament Finalists (2nd Place)', 
-        tr: 'Turnuva Finalisti (2.lik)' 
+        en: 'Judges Award', 
+        tr: 'Jüri Özel Ödülü' 
       },
       event: { 
-        en: 'Our very first tournament experience at VEX Tipping Point, where we reached the finals.', 
-        tr: 'İlk turnuva deneyimimiz olan VEX Tipping Point\'te finale yükselerek büyük bir başarıya imza attık.' 
+        en: 'Recognized by the judges for our team spirit and exemplary engineering process in the Pushback season.', 
+        tr: 'Pushback sezonunda takım ruhumuz ve örnek mühendislik sürecimiz nedeniyle jüri tarafından ödüle layık görüldük.' 
       },
-      icon: 'fa-medal'
+      icon: 'fa-award'
+    },
+    {
+      year: '2024',
+      title: { 
+        en: 'Excellence Award', 
+        tr: 'Excellence (Mükemmellik) Ödülü' 
+      },
+      event: { 
+        en: 'The highest honor in VEX Robotics, awarded to the team with the most complete and high-quality program.', 
+        tr: 'VEX Robotik\'teki en yüksek onur ödülü; en eksiksiz ve yüksek kaliteli programa sahip takıma verilir.' 
+      },
+      icon: 'fa-trophy'
+    },
+    {
+      year: '2023',
+      title: { 
+        en: 'Judges Award', 
+        tr: 'Jüri Özel Ödülü' 
+      },
+      event: { 
+        en: 'Awarded for our unique design process and exemplary team interview performance.', 
+        tr: 'Eşsiz tasarım sürecimiz ve örnek teşkil eden takım mülakatı performansımız için verildi.' 
+      },
+      icon: 'fa-gavel'
     },
     {
       year: '2023',
@@ -33,16 +57,16 @@ const Awards: React.FC<AwardsProps> = ({ lang }) => {
       icon: 'fa-lightbulb'
     },
     {
-      year: '2025',
+      year: '2022',
       title: { 
-        en: 'Judges Award', 
-        tr: 'Jüri Özel Ödülü' 
+        en: 'Tournament Finalists (2nd Place)', 
+        tr: 'Turnuva Finalisti (2.lik)' 
       },
       event: { 
-        en: 'Recognized by the judges for our team spirit and exemplary engineering process in the Pushback season.', 
-        tr: 'Pushback sezonunda takım ruhumuz ve örnek mühendislik sürecimiz nedeniyle jüri tarafından ödüle layık görüldük.' 
+        en: 'Our very first tournament experience at VEX Tipping Point, where we reached the finals.', 
+        tr: 'İlk turnuva deneyimimiz olan VEX Tipping Point\'te finale yükselerek büyük bir başarıya imza attık.' 
       },
-      icon: 'fa-award'
+      icon: 'fa-medal'
     }
   ];
 
@@ -71,13 +95,12 @@ const Awards: React.FC<AwardsProps> = ({ lang }) => {
         <div className="w-24 h-1 bg-purple-600 mx-auto rounded-full"></div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {awards.map((award, index) => (
           <div 
             key={index} 
             className="group relative bg-gray-900/50 border border-purple-900/30 p-8 rounded-3xl hover:border-yellow-500/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col items-center"
           >
-            {/* Arka plan glow efekti */}
             <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-600/10 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-colors"></div>
             
             <div className="relative z-10 text-center">

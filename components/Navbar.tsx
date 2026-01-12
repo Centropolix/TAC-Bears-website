@@ -6,9 +6,10 @@ interface NavbarProps {
   activeSection: string;
   lang: Language;
   setLang: (l: Language) => void;
+  onNavigate: (section: string) => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
+const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigate }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const translations = {
@@ -34,10 +35,10 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang }) => {
     e.preventDefault();
     setIsOpen(false);
     
-    // URL'deki hash'i güncelle
-    window.location.hash = id;
+    // Uygulama içi navigasyonu tetikle
+    onNavigate(id);
 
-    // Eğer ana sayfa bölümlerinden biriyse kaydır
+    // Eğer ana sayfa bölümlerinden biriyse özel kaydırma yap
     const mainSections = ['home', 'team', 'awards', 'sponsors', 'timeline', 'instagram'];
     if (mainSections.includes(id)) {
       const element = document.getElementById(id);

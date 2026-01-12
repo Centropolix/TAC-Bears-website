@@ -4,9 +4,10 @@ import { Language } from '../App';
 
 interface TeamProps {
   lang: Language;
+  onNavigate: (section: string) => void;
 }
 
-const Team: React.FC<TeamProps> = ({ lang }) => {
+const Team: React.FC<TeamProps> = ({ lang, onNavigate }) => {
   const [imgLoaded, setImgLoaded] = useState(false);
   const teamPhotoUrl = "https://lh3.googleusercontent.com/d/1YP_IntmX1gCb2aWqT3Lf3cHtQyEH-1VG";
   
@@ -72,6 +73,10 @@ const Team: React.FC<TeamProps> = ({ lang }) => {
           <div className="pt-4">
              <a 
                href="#team-members" 
+               onClick={(e) => {
+                 e.preventDefault();
+                 onNavigate('team-members');
+               }}
                className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-gray-950 rounded-full font-bold transition-all duration-300 heading-font uppercase tracking-widest group shadow-[0_0_15px_rgba(234,179,8,0.2)]"
              >
                {translations[lang].viewMembers}

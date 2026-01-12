@@ -26,11 +26,20 @@ const App: React.FC = () => {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  // Hash Takibi ve Sayfa Başlatma
+  // Merkezi Navigasyon Fonksiyonu
+  const handleNavigate = (section: string) => {
+    setActiveSection(section);
+    window.location.hash = section;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Hash Takibi ve Sayfa Başlatma (Dış değişimler için)
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
-      setActiveSection(hash);
+      if (hash !== activeSection) {
+        setActiveSection(hash);
+      }
       
       const isolatedPages = ['contact', 'gallery', 'team-members'];
       if (isolatedPages.includes(hash)) {
@@ -39,10 +48,10 @@ const App: React.FC = () => {
     };
 
     window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); // İlk yükleme kontrolü
+    handleHashChange(); 
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  }, [activeSection]);
 
   // Scroll Spy: Sadece ana sayfa bölümlerindeyken çalışır
   useEffect(() => {
@@ -84,15 +93,15 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-yellow-500 selection:text-gray-900 bg-[#030712] text-gray-100 overflow-x-hidden">
-      <Navbar activeSection={activeSection} lang={lang} setLang={setLang} />
+      <Navbar activeSection={activeSection} lang={lang} setLang={setLang} onNavigate={handleNavigate} />
       
       <main className="flex-grow pt-20">
         {isContactPage ? (
-          <Contact lang={lang} />
+          <Contact lang={lang} onNavigate={handleNavigate} />
         ) : isGalleryPage ? (
-          <Gallery lang={lang} />
+          <Gallery lang={lang} onNavigate={handleNavigate} />
         ) : isTeamDetailsPage ? (
-          <TeamDetails lang={lang} />
+          <TeamDetails lang={lang} onNavigate={handleNavigate} />
         ) : (
           <>
             <section id="home">
@@ -100,7 +109,7 @@ const App: React.FC = () => {
             </section>
             
             <section id="team" className="py-20 bg-gray-900/50 scroll-mt-20">
-              <Team lang={lang} />
+              <Team lang={lang} onNavigate={handleNavigate} />
             </section>
 
             <section id="awards" className="py-20 bg-gray-950 scroll-mt-20">
