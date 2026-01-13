@@ -12,32 +12,77 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const members = [
-    { name: 'Can Gökçe Öner', role: { en: 'Team Leader', tr: 'Takım Lideri' }, roleTag: 'LEADER', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400', color: 'from-yellow-400 to-amber-600', border: 'border-yellow-500/30' },
-    { name: 'Turhan Uygur', role: { en: 'Primary Driver', tr: 'Ana Sürücü' }, roleTag: 'DRIVER', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400', color: 'from-blue-400 to-indigo-600', border: 'border-blue-500/30' },
-    { name: 'Kadir Ceylan', role: { en: 'Head Mechanic', tr: 'Baş Mekanik' }, roleTag: 'MECHANIC', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400', color: 'from-orange-400 to-red-600', border: 'border-orange-500/30' },
-    { name: 'Arda Yılmaz', role: { en: 'Software Lead', tr: 'Yazılım Lideri' }, roleTag: 'CODER', image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400', color: 'from-purple-400 to-pink-600', border: 'border-purple-500/30' },
-    { name: 'Ege Demir', role: { en: 'Electronics Specialist', tr: 'Elektronik Uzmanı' }, roleTag: 'CIRCUITS', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400', color: 'from-emerald-400 to-teal-600', border: 'border-emerald-500/30' },
-    { name: 'Selin Akın', role: { en: 'CAD Designer', tr: 'CAD Tasarımcı' }, roleTag: 'DESIGN', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400', color: 'from-cyan-400 to-blue-600', border: 'border-cyan-500/30' },
-    { name: 'Mert Soydan', role: { en: 'Strategy Lead', tr: 'Strateji Lideri' }, roleTag: 'STRATEGY', image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400', color: 'from-red-400 to-orange-600', border: 'border-red-500/30' },
-    { name: 'Deren Kurt', role: { en: 'Autonomous Expert', tr: 'Otonom Uzmanı' }, roleTag: 'AI', image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=400', color: 'from-indigo-400 to-purple-600', border: 'border-indigo-500/30' },
-    { name: 'Emre Yıldız', role: { en: 'Secondary Driver', tr: 'Yedek Sürücü' }, roleTag: 'DRIVER', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400', color: 'from-blue-400 to-indigo-600', border: 'border-blue-500/30' },
-    { name: 'Zeynep Kaya', role: { en: 'Media Manager', tr: 'Medya Yöneticisi' }, roleTag: 'MEDIA', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400', color: 'from-pink-400 to-rose-600', border: 'border-pink-500/30' },
-    { name: 'Bora Çelik', role: { en: 'Scouter', tr: 'Gözlemci' }, roleTag: 'SCOUT', image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=400', color: 'from-lime-400 to-green-600', border: 'border-lime-500/30' },
-    { name: 'Melis Aydın', role: { en: 'Notebook Specialist', tr: 'Mühendislik Defteri' }, roleTag: 'DOCS', image: 'https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=400', color: 'from-amber-400 to-yellow-600', border: 'border-amber-500/30' },
-    { name: 'Kerem Işık', role: { en: 'Pneumatics Eng.', tr: 'Pnömatik Müh.' }, roleTag: 'MECH', image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400', color: 'from-slate-400 to-slate-600', border: 'border-slate-500/30' },
-    { name: 'Aylin Koç', role: { en: 'Physics Analyst', tr: 'Fizik Analisti' }, roleTag: 'SCIENCE', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400', color: 'from-violet-400 to-purple-600', border: 'border-violet-500/30' },
-    { name: 'Deniz Şahin', role: { en: 'Power Systems', tr: 'Güç Sistemleri' }, roleTag: 'ELEC', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400', color: 'from-yellow-300 to-orange-500', border: 'border-yellow-400/30' },
-    { name: 'Sarp Güler', role: { en: 'QA Engineer', tr: 'Kalite Kontrol' }, roleTag: 'QUALITY', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400', color: 'from-teal-400 to-emerald-600', border: 'border-teal-500/30' },
-    { name: 'Nil Su', role: { en: '3D Printing Expert', tr: '3D Yazıcı Uzmanı' }, roleTag: 'FABRIC', image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=400', color: 'from-fuchsia-400 to-purple-600', border: 'border-fuchsia-500/30' },
-    { name: 'Alperen Tan', role: { en: 'Game Analyst', tr: 'Oyun Analisti' }, roleTag: 'TACTIC', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400', color: 'from-blue-500 to-blue-700', border: 'border-blue-600/30' },
-    { name: 'Berra Can', role: { en: 'PR Specialist', tr: 'Halkla İlişkiler' }, roleTag: 'COMMS', image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400', color: 'from-orange-500 to-rose-500', border: 'border-orange-500/30' },
-    { name: 'Kaan Genç', role: { en: 'Field Tech', tr: 'Saha Teknisyeni' }, roleTag: 'FIELD', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400', color: 'from-emerald-500 to-green-700', border: 'border-emerald-600/30' }
+  // En üstte yer alacak büyük kartlar (Öğretmenler/Liderler)
+  const topMembers = [
+    { 
+      name: 'Gökçe', 
+      image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=600', // Fotoğrafı olmayan lider için placeholder
+      color: 'from-yellow-400 via-amber-500 to-yellow-600', 
+      border: 'border-yellow-400/50 shadow-[0_0_30px_rgba(234,179,8,0.2)]' 
+    },
+    { 
+      name: 'Umut', 
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600', 
+      color: 'from-yellow-400 via-amber-500 to-yellow-600', 
+      border: 'border-yellow-400/50 shadow-[0_0_30px_rgba(234,179,8,0.2)]' 
+    },
+    { 
+      name: 'John', 
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600', 
+      color: 'from-yellow-400 via-amber-500 to-yellow-600', 
+      border: 'border-yellow-400/50 shadow-[0_0_30px_rgba(234,179,8,0.2)]' 
+    },
+  ];
+
+  // Geri kalan ekip üyeleri
+  const teamMembers = [
+    { 
+      name: 'Can Gökçe Öner', 
+      image: 'https://lh3.googleusercontent.com/d/1ROJnp7KFTLjugPupbThsdWxHzAbW4NaU', // Can Gökçe'nin kendi fotoğrafı
+      color: 'from-purple-400 to-indigo-600', 
+      border: 'border-purple-500/20' 
+    },
+    { 
+      name: 'Turhan Uygur', 
+      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400', 
+      color: 'from-blue-400 to-indigo-600', 
+      border: 'border-blue-500/20' 
+    },
+    { 
+      name: 'Kadir Ceylan', 
+      image: 'https://lh3.googleusercontent.com/d/1e73nQr3u50sPbDzPX3Wz-Thq4hCNKlkf', 
+      color: 'from-orange-400 to-red-600', 
+      border: 'border-orange-500/20' 
+    },
+    { name: 'Arda Çiloğlu', image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400', color: 'from-purple-400 to-pink-600', border: 'border-purple-500/20' },
+    { name: 'Oğuzalp Kaya', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400', color: 'from-emerald-400 to-teal-600', border: 'border-emerald-500/20' },
+    { name: 'Talha Yücel', image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400', color: 'from-cyan-400 to-blue-600', border: 'border-cyan-500/20' },
+    { name: 'Talya Tokmak', image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400', color: 'from-rose-400 to-pink-600', border: 'border-rose-500/20' },
+    { 
+      name: 'Ali Ziyan', 
+      image: 'https://lh3.googleusercontent.com/d/18Ao-yXk3i18iTKPzWuWWOuj8RnieCtsr', 
+      color: 'from-indigo-400 to-purple-600', 
+      border: 'border-indigo-500/20' 
+    },
+    { name: 'Ali Mirza Kılınç', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400', color: 'from-blue-500 to-cyan-600', border: 'border-blue-500/20' },
+    { name: 'Aral Tormaç', image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=400', color: 'from-teal-400 to-green-600', border: 'border-teal-500/20' },
+    { name: 'Aynil İzmir', image: 'https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=400', color: 'from-amber-400 to-orange-600', border: 'border-amber-500/20' },
+    { name: 'Batuhan', image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400', color: 'from-slate-400 to-slate-600', border: 'border-slate-500/20' },
+    { name: 'Burak Berk Berkeşoğlu', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400', color: 'from-violet-400 to-purple-600', border: 'border-violet-500/20' },
+    { name: 'Hilmi Sungur', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400', color: 'from-yellow-300 to-orange-500', border: 'border-yellow-400/20' },
+    { name: 'Kuzey Bozhöyük', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400', color: 'from-teal-400 to-emerald-600', border: 'border-teal-500/20' },
+    { name: 'Levent Paydak', image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=400', color: 'from-fuchsia-400 to-purple-600', border: 'border-fuchsia-500/20' },
+    { name: 'Mehmet Ali Sağlamcı', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400', color: 'from-blue-500 to-blue-700', border: 'border-blue-600/20' },
+    { name: 'Metehan Tokdemir', image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400', color: 'from-orange-500 to-rose-500', border: 'border-orange-500/20' },
+    { name: 'Öykü', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400', color: 'from-emerald-500 to-green-700', border: 'border-emerald-600/20' },
+    { name: 'Ömer', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400', color: 'from-purple-500 to-indigo-600', border: 'border-purple-600/20' },
+    { name: 'Zeynep Gizer', image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=400', color: 'from-rose-500 to-red-600', border: 'border-rose-600/30' },
+    { name: 'Asme Hayal Çelik', image: 'https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=400', color: 'from-amber-500 to-yellow-600', border: 'border-amber-600/20' }
   ];
 
   const translations = {
-    en: { back: 'CLOSE AND RETURN', title: 'ENGINEERING UNIT' },
-    tr: { back: 'KAPAT VE DÖN', title: 'MÜHENDİSLİK BİRİMİ' }
+    en: { back: 'CLOSE AND RETURN', title: 'ENGINEERING UNIT', tag: 'TEACHER' },
+    tr: { back: 'KAPAT VE DÖN', title: 'MÜHENDİSLİK BİRİMİ', tag: 'ÖĞRETMEN' }
   };
 
   return (
@@ -55,33 +100,65 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
           <div className="h-1 w-32 bg-yellow-500 mx-auto rounded-full"></div>
         </div>
 
-        {/* 5 column grid applied here with lg:grid-cols-5 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
-          {members.map((member, index) => (
+        {/* Üst Kısım: Öğretmenler (Daha Büyük) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mb-20 max-w-5xl mx-auto">
+          {topMembers.map((member, index) => (
             <div 
               key={index}
-              className={`group relative bg-gray-900/40 backdrop-blur-xl rounded-[2.5rem] overflow-hidden border ${member.border} transition-all duration-700 hover:-translate-y-3 shadow-xl`}
+              className={`group relative bg-gray-900/60 backdrop-blur-2xl rounded-[3rem] overflow-hidden border ${member.border} transition-all duration-1000 hover:-translate-y-4`}
+            >
+              <div className="relative h-[400px] w-full">
+                <img 
+                  src={member.image} 
+                  className="w-full h-full object-cover transition-all duration-1000 scale-110 group-hover:scale-100"
+                  alt={member.name}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-90 group-hover:opacity-50 transition-opacity"></div>
+                <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r ${member.color} rounded-xl text-[10px] font-black tracking-[0.4em] text-white border border-white/30 whitespace-nowrap shadow-2xl`}>
+                  {translations[lang].tag}
+                </div>
+              </div>
+              <div className="p-8 text-center relative z-20">
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-1 heading-font tracking-wider group-hover:text-yellow-400 transition-colors">
+                  {member.name}
+                </h3>
+                <div className="w-12 h-1 bg-yellow-500 mx-auto mt-4 rounded-full group-hover:w-24 transition-all duration-500"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Ayırıcı */}
+        <div className="flex items-center space-x-4 mb-16 opacity-30 max-w-xs mx-auto">
+          <div className="h-[1px] flex-grow bg-white"></div>
+          <div className="w-2 h-2 rounded-full bg-white"></div>
+          <div className="h-[1px] flex-grow bg-white"></div>
+        </div>
+
+        {/* Alt Kısım: Diğer Üyeler (5'li Grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
+          {teamMembers.map((member, index) => (
+            <div 
+              key={index}
+              className={`group relative bg-gray-900/40 backdrop-blur-xl rounded-[2.5rem] overflow-hidden border border-white/5 transition-all duration-700 hover:-translate-y-3 shadow-xl hover:border-purple-500/30`}
             >
               <div className="relative h-[250px] w-full">
                 <img 
                   src={member.image} 
-                  className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100"
+                  className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100 opacity-60 group-hover:opacity-100"
                   alt={member.name}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                
-                <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r ${member.color} rounded-lg text-[8px] font-black tracking-[0.3em] text-white border border-white/20 whitespace-nowrap`}>
-                  {member.roleTag}
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-80 group-hover:opacity-40 transition-opacity"></div>
+                <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r ${member.color} rounded-lg text-[8px] font-black tracking-[0.3em] text-white border border-white/20 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
+                  EKİP ÜYESİ
                 </div>
               </div>
 
               <div className="p-5 text-center relative z-20">
-                <h3 className="text-lg font-bold text-white mb-1 heading-font tracking-tight truncate px-1">
+                <h3 className="text-base md:text-lg font-bold text-white mb-1 heading-font tracking-tight truncate px-1 group-hover:text-yellow-500 transition-colors">
                   {member.name}
                 </h3>
-                <p className="text-purple-400 text-[8px] font-black tracking-[0.15em] uppercase opacity-80">
-                  {member.role[lang]}
-                </p>
+                <div className="w-8 h-0.5 bg-purple-500/30 mx-auto mt-2 rounded-full group-hover:w-16 group-hover:bg-yellow-500 transition-all"></div>
               </div>
             </div>
           ))}

@@ -16,7 +16,7 @@ const Team: React.FC<TeamProps> = ({ lang, onNavigate }) => {
       title: 'Our',
       titleSpan: 'Team',
       lineup: '2025-2026 Season Lineup',
-      subtitle: 'Engineering Excellence',
+      subtitle: 'About Us',
       description: 'TAC Bears is more than just a robotics team; we are a group of dedicated engineers, programmers, and strategists. For the Pushback 2025-2026 season, our focus is on unmatched precision and innovative mechanical solutions.',
       viewMembers: 'Meet the Specialists'
     },
@@ -24,7 +24,7 @@ const Team: React.FC<TeamProps> = ({ lang, onNavigate }) => {
       title: 'Bizim',
       titleSpan: 'Ekibimiz',
       lineup: '2025-2026 Sezon Kadrosu',
-      subtitle: 'Mühendislik Mükemmelliği',
+      subtitle: 'Hakkımızda',
       description: 'TAC Bears bir robotik takımından daha fazlasıdır; biz kendini adamış mühendisler, programcılar ve stratejistlerden oluşan bir grubuz. 2025-2026 Pushback sezonu için odak noktamız eşsiz hassasiyet ve yenilikçi mekanik çözümler üretmektir.',
       viewMembers: 'Uzmanlarımızı Tanıyın'
     }
