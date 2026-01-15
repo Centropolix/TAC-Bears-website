@@ -68,7 +68,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
         {/* Made by Section */}
         <div className="mt-12 pt-8 border-t border-white/5 text-center">
           <p className="text-[10px] uppercase tracking-[0.25em] text-gray-500 font-semibold opacity-70 hover:opacity-100 hover:text-purple-400 transition-all duration-500 cursor-default">
-            made by Kadir Ceylan Tac'28
+            made by Kadır Ceylan Tac'28
           </p>
         </div>
       </div>

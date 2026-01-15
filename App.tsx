@@ -26,65 +26,22 @@ const App: React.FC = () => {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  // Merkezi Navigasyon Fonksiyonu
   const handleNavigate = (section: string) => {
     setActiveSection(section);
     window.location.hash = section;
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Hash Takibi ve Sayfa Başlatma (Dış değişimler için)
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '') || 'home';
       if (hash !== activeSection) {
         setActiveSection(hash);
       }
-      
-      const isolatedPages = ['contact', 'gallery', 'team-members'];
-      if (isolatedPages.includes(hash)) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
     };
-
     window.addEventListener('hashchange', handleHashChange);
     handleHashChange(); 
-
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [activeSection]);
-
-  // Scroll Spy: Sadece ana sayfa bölümlerindeyken çalışır
-  useEffect(() => {
-    const isolatedPages = ['contact', 'gallery', 'team-members'];
-    if (isolatedPages.includes(activeSection)) return;
-
-    const handleScroll = () => {
-      if (window.scrollY < 100) {
-        if (activeSection !== 'home') setActiveSection('home');
-        return;
-      }
-
-      const sections = ['home', 'team', 'awards', 'sponsors', 'timeline', 'instagram'];
-      let currentSection = activeSection;
-
-      for (const id of sections) {
-        const element = document.getElementById(id);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 250 && rect.bottom >= 250) {
-            currentSection = id;
-            break;
-          }
-        }
-      }
-
-      if (currentSection !== activeSection && !isolatedPages.includes(currentSection)) {
-        setActiveSection(currentSection);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
   }, [activeSection]);
 
   const isContactPage = activeSection === 'contact';
@@ -108,23 +65,23 @@ const App: React.FC = () => {
               <Hero lang={lang} />
             </section>
             
-            <section id="team" className="py-20 bg-gray-900/50 scroll-mt-20">
+            <section id="team" className="py-32 bg-gray-900/20 scroll-mt-20">
               <Team lang={lang} onNavigate={handleNavigate} />
             </section>
 
-            <section id="awards" className="py-20 bg-gray-950 scroll-mt-20">
+            <section id="awards" className="py-32 bg-gray-950 scroll-mt-20">
               <Awards lang={lang} />
             </section>
 
-            <section id="sponsors" className="py-20 bg-gray-900/50 scroll-mt-20">
+            <section id="sponsors" className="py-32 bg-gray-900/20 scroll-mt-20">
               <Sponsors lang={lang} />
             </section>
 
-            <section id="timeline" className="py-20 bg-gray-950 scroll-mt-20">
+            <section id="timeline" className="py-32 bg-gray-950 scroll-mt-20">
               <Timeline lang={lang} />
             </section>
             
-            <section id="instagram" className="py-20 bg-gray-900/50 scroll-mt-20">
+            <section id="instagram" className="py-32 bg-gray-900/20 scroll-mt-20">
               <Instagram lang={lang} />
             </section>
           </>
