@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Language } from '../App';
 
@@ -57,10 +56,8 @@ const Team: React.FC<TeamProps> = ({ lang, onNavigate }) => {
                  setImgLoaded(true);
                }}
              />
-             {/* Gölge (Overlay) tüm alanı kapsayacak şekilde güncellendi */}
-             <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/40 to-gray-950/10 opacity-70"></div>
              
-             <div className="absolute bottom-6 left-6">
+             <div className="absolute bottom-6 left-6 drop-shadow-lg">
                 <p className="text-yellow-500 font-bold text-xl heading-font italic tracking-wide">{translations[lang].lineup}</p>
              </div>
           </div>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Language } from '../App';
 
@@ -10,7 +9,6 @@ interface GalleryProps {
 const Gallery: React.FC<GalleryProps> = ({ lang, onNavigate }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
-  // Görsel listesi sadece temel öğeleri içerecek şekilde güncellendi
   const images = [
     { url: "https://lh3.googleusercontent.com/d/1F0FoGCklk462cNMQrz_IfVOp9j2EdY5_", title: "Season Highlights" },
     { url: "https://lh3.googleusercontent.com/d/1YP_IntmX1gCb2aWqT3Lf3cHtQyEH-1VG", title: "Team Photo" }
@@ -56,16 +54,15 @@ const Gallery: React.FC<GalleryProps> = ({ lang, onNavigate }) => {
               <img 
                 src={img.url} 
                 alt={img.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-100"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
-              <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-purple-600/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-purple-500/30">
+              <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-purple-600/40 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-purple-500/30">
                 <i className="fas fa-search-plus text-white"></i>
               </div>
               <div className="absolute bottom-4 left-6 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                <p className="text-yellow-500 font-bold heading-font text-xs tracking-widest uppercase">{img.title}</p>
+                <p className="text-yellow-500 font-bold heading-font text-xs tracking-widest uppercase drop-shadow-md">{img.title}</p>
               </div>
             </div>
           ))}
