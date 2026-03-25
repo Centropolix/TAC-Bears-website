@@ -1,27 +1,28 @@
 
 import React from 'react';
-import { Language } from '../App';
+import { Language, AppMode } from '../App';
 
 interface FooterProps {
   lang: Language;
+  appMode: AppMode;
 }
 
-const Footer: React.FC<FooterProps> = ({ lang }) => {
+const Footer: React.FC<FooterProps> = ({ lang, appMode }) => {
   const igLink = "https://www.instagram.com/tacbears?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==";
   const youtubeLink = "https://www.youtube.com/channel/UCV4UHPtxzF-x3ZD2sd6Q2fA";
 
   const translations = {
     en: {
       tagline: 'Engineering is the future',
-      rights: 'All rights reserved.',
-      season: 'VEX Robotics Pushback Season 2025-2026.'
+      rights: 'All rights reserved.'
     },
     tr: {
       tagline: 'Mühendislik Gelecektir',
-      rights: 'Tüm hakları saklıdır.',
-      season: 'VEX Robotik Pushback Sezonu 2025-2026.'
+      rights: 'Tüm hakları saklıdır.'
     }
   };
+
+  const themeColor = appMode === 'frc' ? 'text-blue-500' : 'text-yellow-500';
 
   return (
     <footer className="bg-gray-950 border-t border-purple-900/20 py-12">
@@ -30,7 +31,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
           <div>
             <div className="flex items-center space-x-2 mb-4 justify-center md:justify-start">
               <span className="text-xl font-bold text-purple-500 heading-font">TAC</span>
-              <span className="text-xl font-bold text-yellow-500 heading-font">BEARS</span>
+              <span className={`text-xl font-bold ${themeColor} heading-font`}>BEARS</span>
             </div>
             <p className="text-purple-400/60 text-sm max-w-xs text-center md:text-left uppercase tracking-widest font-semibold">
               {translations[lang].tagline}
@@ -43,7 +44,7 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
                 href={igLink} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="text-gray-500 hover:text-yellow-400 transition-colors"
+                className={`text-gray-500 hover:${themeColor} transition-colors`}
                 aria-label="Instagram"
               >
                 <i className="fab fa-instagram text-xl"></i>
@@ -59,13 +60,11 @@ const Footer: React.FC<FooterProps> = ({ lang }) => {
               </a>
             </div>
             <p className="text-gray-600 text-xs text-center md:text-right">
-              &copy; {new Date().getFullYear()} TAC Bears. {translations[lang].rights}<br />
-              <span className="text-yellow-500/50">{translations[lang].season}</span>
+              &copy; {new Date().getFullYear()} TAC Bears. {translations[lang].rights}
             </p>
           </div>
         </div>
 
-        {/* Made by Section */}
         <div className="mt-12 pt-8 border-t border-white/5 text-center">
           <p className="text-[10px] uppercase tracking-[0.25em] text-gray-500 font-semibold opacity-70 hover:opacity-100 hover:text-purple-400 transition-all duration-500 cursor-default">
             made by Kadır Ceylan Tac'28
