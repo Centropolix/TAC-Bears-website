@@ -14,7 +14,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
   const topMembers = [
     { 
       name: 'Gökçe Cakoğlu', 
-      image: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=600', 
+      image: '', 
       color: 'from-yellow-400 via-amber-500 to-yellow-600', 
       border: 'border-yellow-400/50 shadow-[0_0_30px_rgba(234,179,8,0.2)]' 
     },
@@ -26,7 +26,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
     },
     { 
       name: 'John', 
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=600', 
+      image: '', 
       color: 'from-yellow-400 via-amber-500 to-yellow-600', 
       border: 'border-yellow-400/50 shadow-[0_0_30px_rgba(234,179,8,0.2)]' 
     },
@@ -41,7 +41,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
     },
     { 
       name: 'Turhan Uygur', 
-      image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=400', 
+      image: '', 
       color: 'from-blue-400 to-indigo-600', 
       border: 'border-blue-500/20' 
     },
@@ -51,7 +51,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
       color: 'from-orange-400 to-red-600', 
       border: 'border-orange-500/20' 
     },
-    { name: 'Arda Çiloğlu', image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400', color: 'from-purple-400 to-pink-600', border: 'border-purple-500/20' },
+    { name: 'Arda Çiloğlu', image: '', color: 'from-purple-400 to-pink-600', border: 'border-purple-500/20' },
     { name: 'Oğuzalp Kaya', image: 'https://lh3.googleusercontent.com/d/1tDoQY85Txe_7K1HMdbWy_MpDtkSyE9O3', color: 'from-emerald-400 to-teal-600', border: 'border-emerald-500/20' },
     { name: 'Talha Yücel', image: 'https://lh3.googleusercontent.com/d/1QCJLIdljMrUbtcjXSMeNYrL_z7B1l_eE', color: 'from-cyan-400 to-blue-600', border: 'border-cyan-500/20' },
     { name: 'Talya Tokmak', image: 'https://lh3.googleusercontent.com/d/1kh8AGJx80UwEyBqktNwwqGQvHlLmHkTq', color: 'from-rose-400 to-pink-600', border: 'border-rose-500/20' },
@@ -62,24 +62,24 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
       border: 'border-indigo-500/20' 
     },
     { name: 'Ali Mirza Kılınç', image: 'https://lh3.googleusercontent.com/d/1DB7EqvZ10Hn--5dgJvGNAOSLmjO6-4Qk', color: 'from-blue-500 to-cyan-600', border: 'border-blue-500/20' },
-    { name: 'Aral Tormaç', image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=400', color: 'from-teal-400 to-green-600', border: 'border-teal-500/20' },
+    { name: 'Aral Tormaç', image: '', color: 'from-teal-400 to-green-600', border: 'border-teal-500/20' },
     { name: 'Aynil İzmir', image: 'https://lh3.googleusercontent.com/d/1B3FsDN7WxUuK8sMIXlb2rEQ-jepbbpfE', color: 'from-amber-400 to-orange-600', border: 'border-amber-500/20' },
-    { name: 'Batuhan', image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=400', color: 'from-slate-400 to-slate-600', border: 'border-slate-500/20' },
-    { name: 'Burak Berk Berkeşoğlu', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400', color: 'from-violet-400 to-purple-600', border: 'border-violet-500/20' },
-    { name: 'Hilmi Sungur', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400', color: 'from-yellow-300 to-orange-500', border: 'border-yellow-400/20' },
+    { name: 'Batuhan', image: '', color: 'from-slate-400 to-slate-600', border: 'border-slate-500/20' },
+    { name: 'Burak Berk Berkeşoğlu', image: '', color: 'from-violet-400 to-purple-600', border: 'border-violet-500/20' },
+    { name: 'Hilmi Sungur', image: '', color: 'from-yellow-300 to-orange-500', border: 'border-yellow-400/20' },
     { name: 'Kuzey Bozhöyük', image: 'https://lh3.googleusercontent.com/d/1imR9wXoJ2VCnCu0SZwyrTiQQZz5uyyIV', color: 'from-teal-400 to-emerald-600', border: 'border-teal-500/20' },
-    { name: 'Levent Paydak', image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=400', color: 'from-fuchsia-400 to-purple-600', border: 'border-fuchsia-500/20' },
-    { name: 'Mehmet Ali Sağlamcı', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400', color: 'from-blue-500 to-blue-700', border: 'border-blue-600/20' },
-    { name: 'Metehan Tokdemir', image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=400', color: 'from-orange-500 to-rose-500', border: 'border-orange-500/20' },
-    { name: 'Öykü', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400', color: 'from-emerald-500 to-green-700', border: 'border-emerald-600/20' },
+    { name: 'Levent Paydak', image: '', color: 'from-fuchsia-400 to-purple-600', border: 'border-fuchsia-500/20' },
+    { name: 'Mehmet Ali Sağlamcı', image: '', color: 'from-blue-500 to-blue-700', border: 'border-blue-600/20' },
+    { name: 'Metehan Tokdemir', image: '', color: 'from-orange-500 to-rose-500', border: 'border-orange-500/20' },
+    { name: 'Öykü', image: '', color: 'from-emerald-500 to-green-700', border: 'border-emerald-600/20' },
     { 
       name: 'Ömer Utku Ataş', 
       image: 'https://lh3.googleusercontent.com/d/1bjgoZ2KDbgdgO2F5L9AM8wiLbqkp0Au4', 
       color: 'from-purple-500 to-indigo-600', 
       border: 'border-purple-600/20' 
     },
-    { name: 'Zeynep Gizer', image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=400', color: 'from-rose-500 to-red-600', border: 'border-rose-600/30' },
-    { name: 'Asme Hayal Çelik', image: 'https://images.unsplash.com/photo-1548142813-c348350df52b?q=80&w=400', color: 'from-amber-500 to-yellow-600', border: 'border-amber-600/20' }
+    { name: 'Zeynep Gizer', image: '', color: 'from-rose-500 to-red-600', border: 'border-rose-600/30' },
+    { name: 'Asme Hayal Çelik', image: '', color: 'from-amber-500 to-yellow-600', border: 'border-amber-600/20' }
   ];
 
   const translations = {
@@ -110,11 +110,17 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
               className={`group relative bg-gray-900/60 backdrop-blur-2xl rounded-[3rem] overflow-hidden border ${member.border} transition-all duration-1000 hover:-translate-y-4`}
             >
               <div className="relative h-[400px] w-full bg-gray-950">
-                <img 
-                  src={member.image} 
-                  className="w-full h-full object-cover transition-all duration-1000 scale-110 group-hover:scale-100 opacity-100"
-                  alt={member.name}
-                />
+                {member.image ? (
+                  <img 
+                    src={member.image} 
+                    className="w-full h-full object-cover transition-all duration-1000 scale-110 group-hover:scale-100 opacity-100"
+                    alt={member.name}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gray-900/50">
+                    <i className="fas fa-user text-gray-800 text-6xl"></i>
+                  </div>
+                )}
                 
                 <div className={`absolute bottom-6 left-1/2 -translate-x-1/2 px-6 py-2 bg-gradient-to-r ${member.color} rounded-xl text-[10px] font-black tracking-[0.4em] text-white border border-white/30 whitespace-nowrap shadow-2xl z-20`}>
                   {translations[lang].tag}
@@ -144,11 +150,17 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
               className="group relative bg-gray-900/40 backdrop-blur-xl rounded-[2.5rem] overflow-hidden border border-white/5 transition-all duration-700 hover:-translate-y-3 shadow-xl hover:border-purple-500/30"
             >
               <div className="relative h-[250px] w-full bg-gray-950">
-                <img 
-                  src={member.image} 
-                  className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100 opacity-100"
-                  alt={member.name}
-                />
+                {member.image ? (
+                  <img 
+                    src={member.image} 
+                    className="w-full h-full object-cover transition-all duration-1000 scale-105 group-hover:scale-100 opacity-100"
+                    alt={member.name}
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gray-900/50">
+                    <i className="fas fa-user text-gray-700 text-4xl"></i>
+                  </div>
+                )}
                 
                 <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 bg-gradient-to-r ${member.color} rounded-lg text-[8px] font-black tracking-[0.3em] text-white border border-white/20 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20`}>
                   MEMBER
