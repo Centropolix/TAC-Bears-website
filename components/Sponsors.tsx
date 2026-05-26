@@ -8,7 +8,7 @@ interface SponsorsProps {
 }
 
 const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
-  const formsLink = "https://forms.gle/your-actual-form-id"; 
+  const formsLink = "https://docs.google.com/forms/d/e/1FAIpQLSelwFPq3E6fVLM_6fhWel7zrW0IYeubufBP0hTL9CYxHdAgNQ/viewform?usp=publish-editor"; 
 
   const translations = {
     en: {
@@ -19,7 +19,7 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
       applyTitle: 'Become a Sponsor',
       applyDesc: 'Join our journey and get featured on our robot, website, and social media.',
       applyBtn: 'Fill Out Sponsorship Form',
-      noSponsors: appMode === 'frc' ? 'FRC Sponsorship opportunities are open for Reefscape 2025.' : 'VEX Sponsorship opportunities are open for Pushback 2025-2026.'
+      noSponsors: appMode === 'frc' ? 'FRC Sponsorship opportunities are open.' : 'VEX Sponsorship opportunities are open.'
     },
     tr: {
       title: 'Sponsorlarımız',
@@ -29,13 +29,20 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
       applyTitle: 'Sponsorumuz Olun',
       applyDesc: 'Yolculuğumuza katılın; robotumuzda, web sitemizde ve sosyal medyamızda yer alın.',
       applyBtn: 'Sponsorluk Formunu Doldur',
-      noSponsors: appMode === 'frc' ? 'FRC Reefscape 2025 sezonu sponsorluk başvuruları devam etmektedir.' : 'VEX Pushback 2025-2026 sezonu sponsorluk başvuruları devam etmektedir.'
+      noSponsors: appMode === 'frc' ? 'FRC sezonu sponsorluk başvuruları devam etmektedir.' : 'VEX sezonu sponsorluk başvuruları devam etmektedir.'
     }
   };
 
   const themeColor = appMode === 'frc' ? 'text-blue-500' : 'text-yellow-500';
   const themeBg = appMode === 'frc' ? 'bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-yellow-500 shadow-[0_0_20px_rgba(234,179,8,0.3)]';
   const themeGlow = appMode === 'frc' ? 'from-blue-600 to-purple-500' : 'from-purple-600 to-yellow-500';
+
+  const sponsorsList = [
+    {
+      name: "Sponsor",
+      logo: "https://lh3.googleusercontent.com/d/1rh4tWIN7gOkOqA96Oca8oYkVuZqdOCdq",
+    }
+  ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,10 +56,21 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
-        <div className="col-span-full py-12 border-2 border-dashed border-purple-900/30 rounded-3xl flex items-center justify-center bg-gray-900/30">
-          <p className="text-gray-500 font-medium italic text-center px-4">{translations[lang].noSponsors}</p>
-        </div>
+      <div className="flex flex-wrap justify-center gap-8 mb-20">
+        {sponsorsList.map((sponsor, index) => (
+          <div 
+            key={index} 
+            className="group relative bg-[#111827]/40 backdrop-blur-xl rounded-[2.5rem] p-8 border border-white/5 flex items-center justify-center w-72 h-44 transition-all duration-500 hover:-translate-y-2 hover:border-purple-500/30 shadow-xl overflow-hidden"
+          >
+            <div className={`absolute inset-0 bg-gradient-to-tr ${themeGlow} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none`}></div>
+            <img 
+              src={sponsor.logo} 
+              alt={sponsor.name} 
+              referrerPolicy="no-referrer"
+              className="max-h-24 max-w-[85%] object-contain filter brightness-95 contrast-105 group-hover:brightness-110 transition-all duration-300"
+            />
+          </div>
+        ))}
       </div>
 
       <div className="relative group">

@@ -172,7 +172,7 @@ const Landing: React.FC<LandingProps> = ({ lang, setMode }) => {
       <section className="py-40 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="space-y-10">
-            <h2 className="text-5xl md:text-8xl font-black heading-font tracking-tighter leading-[0.9] mb-8">
+            <h2 className="text-6xl md:text-9xl font-black heading-font tracking-tighter leading-[0.8] mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/40">
               {t.aboutTitle}
             </h2>
             <p className="text-gray-400 text-2xl leading-relaxed max-w-xl">

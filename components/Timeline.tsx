@@ -45,8 +45,8 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
     {
       year: '2025',
       title: { 
-        en: appMode === 'frc' ? 'Reefscape 25' : 'Pushback Season', 
-        tr: appMode === 'frc' ? 'Reefscape 25' : 'Pushback Sezonu' 
+        en: appMode === 'frc' ? 'Reefscape' : 'VEX Season', 
+        tr: appMode === 'frc' ? 'Reefscape' : 'VEX Sezonu' 
       },
       desc: { 
         en: appMode === 'frc' ? 'Adapting to FRC challenges with robust systems.' : 'Focusing on high-frequency intake and precision.', 

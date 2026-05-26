@@ -41,7 +41,6 @@ const App: React.FC = () => {
   const handleNavigate = (section: string) => {
     setActiveSection(section);
     window.location.hash = section;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -54,6 +53,32 @@ const App: React.FC = () => {
     window.addEventListener('hashchange', handleHashChange);
     handleHashChange(); 
     return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [activeSection]);
+
+  useEffect(() => {
+    const isMainSection = ['home', 'team', 'sponsors', 'awards', 'instagram'].includes(activeSection);
+    if (isMainSection) {
+      const timer = setTimeout(() => {
+        if (activeSection === 'home') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const element = document.getElementById(activeSection);
+          if (element) {
+            const navbarOffset = 80;
+            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navbarOffset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }, [activeSection]);
 
   const isContactPage = activeSection === 'contact';
