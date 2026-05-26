@@ -13,19 +13,19 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
 
   const topMembers = [
     { 
-      name: 'Gökçe Cakoğlu', 
+      name: 'Gökçe Akoğlu', 
       image: '', 
       color: 'from-yellow-400 via-amber-500 to-yellow-600', 
       border: 'border-yellow-400/50 shadow-[0_0_30px_rgba(234,179,8,0.2)]' 
     },
     { 
-      name: 'Umut Mumcu', 
+      name: 'Umut Uncu', 
       image: 'https://lh3.googleusercontent.com/d/10XxyGJekP9XmXl7eSG0uPnaEBFUcuGyk', 
       color: 'from-yellow-400 via-amber-500 to-yellow-600', 
       border: 'border-yellow-400/50 shadow-[0_0_30px_rgba(234,179,8,0.2)]' 
     },
     { 
-      name: 'John', 
+      name: 'John Johnes', 
       image: '', 
       color: 'from-yellow-400 via-amber-500 to-yellow-600', 
       border: 'border-yellow-400/50 shadow-[0_0_30px_rgba(234,179,8,0.2)]' 
@@ -67,24 +67,16 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
     { name: 'Arda Çiloğlu', image: 'https://lh3.googleusercontent.com/d/1G-YdV2x8gLpgb6AuYM8MtDQnQukYC5Eu', color: 'from-purple-400 to-pink-600', border: 'border-purple-500/20' },
     { name: 'Talha Yücel', image: 'https://lh3.googleusercontent.com/d/1QCJLIdljMrUbtcjXSMeNYrL_z7B1l_eE', color: 'from-cyan-400 to-blue-600', border: 'border-cyan-500/20' },
     { name: 'Talya Tokmak', image: 'https://lh3.googleusercontent.com/d/1kh8AGJx80UwEyBqktNwwqGQvHlLmHkTq', color: 'from-rose-400 to-pink-600', border: 'border-rose-500/20' },
-    { 
-      name: 'Ali Ziyan', 
-      image: 'https://lh3.googleusercontent.com/d/18Ao-yXk3i18iTKPzWuWWOuj8RnieCtsr', 
-      color: 'from-indigo-400 to-purple-600', 
-      border: 'border-indigo-500/20' 
-    },
     { name: 'Ali Mirza Kılınç', image: 'https://lh3.googleusercontent.com/d/1DB7EqvZ10Hn--5dgJvGNAOSLmjO6-4Qk', color: 'from-blue-500 to-cyan-600', border: 'border-blue-500/20' },
     { name: 'Aral Tormaç', image: 'https://lh3.googleusercontent.com/d/1M3lRRndUBMPKF2yijqY5nt9rkpAr8oix', color: 'from-teal-400 to-green-600', border: 'border-teal-500/20' },
-    { name: 'Arin', image: 'https://lh3.googleusercontent.com/d/10zx4Up3SOQcpmJeVND2Si5MOLe81cbwI', color: 'from-pink-400 to-rose-600', border: 'border-pink-500/20' },
-    { name: 'Aynil İzmir', image: 'https://lh3.googleusercontent.com/d/1B3FsDN7WxUuK8sMIXlb2rEQ-jepbbpfE', color: 'from-amber-400 to-orange-600', border: 'border-amber-500/20' },
-    { name: 'Batuhan', image: 'https://lh3.googleusercontent.com/d/17BO2m_lvOQ5ZHuJoA0jZzt6O6Ssl0xOB', color: 'from-slate-400 to-slate-600', border: 'border-slate-500/20' },
+    { name: 'Arin Yadigaroğulları', image: 'https://lh3.googleusercontent.com/d/10zx4Up3SOQcpmJeVND2Si5MOLe81cbwI', color: 'from-pink-400 to-rose-600', border: 'border-pink-500/20' },
+    { name: 'Aynil İzmir Gülaçtı', image: 'https://lh3.googleusercontent.com/d/1B3FsDN7WxUuK8sMIXlb2rEQ-jepbbpfE', color: 'from-amber-400 to-orange-600', border: 'border-amber-500/20' },
+    { name: 'Batuhan Selçik', image: 'https://lh3.googleusercontent.com/d/17BO2m_lvOQ5ZHuJoA0jZzt6O6Ssl0xOB', color: 'from-slate-400 to-slate-600', border: 'border-slate-500/20' },
     { name: 'Burak Berk Berkeşoğlu', image: '', color: 'from-violet-400 to-purple-600', border: 'border-violet-500/20' },
-    { name: 'Hilmi Sungur', image: 'https://lh3.googleusercontent.com/d/15bigsA15WY7GBkgokJtDISGdYcRxU2rd', color: 'from-yellow-300 to-orange-500', border: 'border-yellow-400/20' },
     { name: 'Kuzey Bozhöyük', image: 'https://lh3.googleusercontent.com/d/1imR9wXoJ2VCnCu0SZwyrTiQQZz5uyyIV', color: 'from-teal-400 to-emerald-600', border: 'border-teal-500/20' },
-    { name: 'Levent Paydak', image: '', color: 'from-fuchsia-400 to-purple-600', border: 'border-fuchsia-500/20' },
     { name: 'Mehmet Ali Sağlamcı', image: '', color: 'from-blue-500 to-blue-700', border: 'border-blue-600/20' },
     { name: 'Metehan Tokdemir', image: 'https://lh3.googleusercontent.com/d/1qLTYELPQap_-XPA_HeMuBSOKgXXOHbaB', color: 'from-orange-500 to-rose-500', border: 'border-orange-500/20' },
-    { name: 'Öykü', image: '', color: 'from-emerald-500 to-green-700', border: 'border-emerald-600/20' },
+    { name: 'Öykü Arı', image: '', color: 'from-emerald-500 to-green-700', border: 'border-emerald-600/20' },
     { 
       name: 'Ömer Utku Ataş', 
       image: 'https://lh3.googleusercontent.com/d/1bjgoZ2KDbgdgO2F5L9AM8wiLbqkp0Au4', 
