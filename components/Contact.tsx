@@ -8,7 +8,7 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ lang, onNavigate }) => {
-  const email = "tatokmak28@my.tac.k12.tr"; 
+  const email = "robotics@my.tac.k12.tr"; 
 
   const translations = {
     en: {

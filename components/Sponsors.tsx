@@ -41,6 +41,10 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
     {
       name: "Sponsor",
       logo: "https://lh3.googleusercontent.com/d/1rh4tWIN7gOkOqA96Oca8oYkVuZqdOCdq",
+    },
+    {
+      name: "Sponsor 2",
+      logo: "https://lh3.googleusercontent.com/d/1kcxsxbkF0RCa4HO1TVTpWKAcGkMsE5N_",
     }
   ];
 
