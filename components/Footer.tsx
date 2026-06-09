@@ -22,17 +22,23 @@ const Footer: React.FC<FooterProps> = ({ lang, appMode }) => {
     }
   };
 
-  const themeColor = appMode === 'frc' ? 'text-blue-500' : 'text-yellow-500';
+  const themeColor = 'text-purple-400';
 
   return (
     <footer className="bg-gray-950 border-t border-purple-900/20 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
           <div>
-            <div className="flex items-center space-x-2 mb-4 justify-center md:justify-start">
+            <button 
+              onClick={() => { 
+                window.location.hash = 'home';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="flex items-center space-x-2 mb-4 justify-center md:justify-start hover:opacity-80 transition-opacity"
+            >
               <span className="text-xl font-bold text-purple-500 heading-font">TAC</span>
               <span className={`text-xl font-bold ${themeColor} heading-font`}>BEARS</span>
-            </div>
+            </button>
             <p className="text-purple-400/60 text-sm max-w-xs text-center md:text-left uppercase tracking-widest font-semibold">
               {translations[lang].tagline}
             </p>

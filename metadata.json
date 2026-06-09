@@ -1,5 +1,6 @@
 {
-  "name": "TAC Bears - VEX Pushback 2025-2026",
-  "description": "The official website for TAC Bears, a VEX Robotics team competing in the Pushback 2025-2026 season. Featuring our team, mission, and social media links.",
-  "requestFramePermissions": []
+  "name": "TAC Bears - VEX & FRC Robotics",
+  "description": "The official website for TAC Bears, the robotics community of Tarsus American College, competing in VEX Pushback 2025-2026 and FRC 2026 seasons.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

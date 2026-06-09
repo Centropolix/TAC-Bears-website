@@ -17,10 +17,7 @@ export type Language = 'en' | 'tr';
 export type AppMode = 'vex' | 'frc' | 'general';
 
 const App: React.FC = () => {
-  const [appMode, setAppMode] = useState<AppMode>(() => {
-    const savedMode = localStorage.getItem('tac-bears-mode');
-    return (savedMode === 'vex' || savedMode === 'frc') ? savedMode as AppMode : 'general';
-  });
+  const [appMode, setAppMode] = useState<AppMode>('general');
   const [activeSection, setActiveSection] = useState('home');
   const [lang, setLang] = useState<Language>(() => {
     const savedLang = localStorage.getItem('tac-bears-lang');
@@ -31,12 +28,6 @@ const App: React.FC = () => {
     localStorage.setItem('tac-bears-lang', lang);
     document.documentElement.lang = lang;
   }, [lang]);
-
-  useEffect(() => {
-    localStorage.setItem('tac-bears-mode', appMode);
-    // Reset section when changing mode to avoid confusion
-    if (activeSection !== 'home') setActiveSection('home');
-  }, [appMode]);
 
   const handleNavigate = (section: string) => {
     setActiveSection(section);
@@ -56,34 +47,8 @@ const App: React.FC = () => {
   }, [activeSection]);
 
   useEffect(() => {
-    const isMainSection = ['home', 'team', 'sponsors', 'awards', 'instagram'].includes(activeSection);
-    if (isMainSection) {
-      const timer = setTimeout(() => {
-        if (activeSection === 'home') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          const element = document.getElementById(activeSection);
-          if (element) {
-            const navbarOffset = 80;
-            const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementPosition - navbarOffset;
-
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
-            });
-          }
-        }
-      }, 100);
-      return () => clearTimeout(timer);
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, [activeSection]);
-
-  const isContactPage = activeSection === 'contact';
-  const isGalleryPage = activeSection === 'gallery';
-  const isTeamDetailsPage = activeSection === 'team-members';
 
   return (
     <div className="min-h-screen flex flex-col selection:bg-purple-500 selection:text-white bg-[#030712] text-gray-100 overflow-x-hidden">
@@ -97,60 +62,51 @@ const App: React.FC = () => {
       />
       
       <main className="flex-grow">
-        {appMode === 'general' ? (
-          <Landing lang={lang} setMode={setAppMode} />
-        ) : (
-          <div className="pt-20">
-            {isContactPage ? (
-              <Contact lang={lang} onNavigate={handleNavigate} />
-            ) : isGalleryPage ? (
-              <Gallery lang={lang} onNavigate={handleNavigate} />
-            ) : isTeamDetailsPage ? (
-              <TeamDetails lang={lang} onNavigate={handleNavigate} />
-            ) : (
-              <>
-                <section id="home">
-                  <Hero lang={lang} appMode={appMode} />
-                </section>
-                
-                <section id="team" className="py-32 bg-gray-900/20 scroll-mt-20">
-                  <Team lang={lang} onNavigate={handleNavigate} appMode={appMode} />
-                </section>
+        <div className="pt-20">
+          {activeSection === 'home' && (
+            <>
+              <section id="home">
+                <Hero lang={lang} appMode={appMode} />
+              </section>
+              <section id="timeline" className="py-20 bg-gray-950">
+                <Timeline lang={lang} appMode={appMode} />
+              </section>
+              <section id="instagram" className="py-20 bg-gray-900/20">
+                <Instagram lang={lang} appMode={appMode} />
+              </section>
+            </>
+          )}
 
-                {appMode === 'frc' ? (
-                  <>
-                    <section id="sponsors" className="py-32 bg-gray-900/20 scroll-mt-20">
-                      <Sponsors lang={lang} appMode={appMode} />
-                    </section>
-                    <section id="awards" className="py-32 bg-gray-950 scroll-mt-20">
-                      <Awards lang={lang} appMode={appMode} />
-                    </section>
-                  </>
-                ) : (
-                  <>
-                    <section id="awards" className="py-32 bg-gray-950 scroll-mt-20">
-                      <Awards lang={lang} appMode={appMode} />
-                    </section>
-                    <section id="sponsors" className="py-32 bg-gray-900/20 scroll-mt-20">
-                      <Sponsors lang={lang} appMode={appMode} />
-                    </section>
-                  </>
-                )}
+          {activeSection === 'team' && (
+            <section id="team" className="py-20 bg-gray-950 min-h-[80vh] flex flex-col justify-center">
+              <Team lang={lang} onNavigate={handleNavigate} appMode={appMode} />
+            </section>
+          )}
 
-                {/* Timeline section is removed for FRC mode as requested */}
-                {appMode !== 'frc' && (
-                  <section id="timeline" className="py-32 bg-gray-950 scroll-mt-20">
-                    <Timeline lang={lang} appMode={appMode} />
-                  </section>
-                )}
-                
-                <section id="instagram" className="py-32 bg-gray-900/20 scroll-mt-20">
-                  <Instagram lang={lang} appMode={appMode} />
-                </section>
-              </>
-            )}
-          </div>
-        )}
+          {activeSection === 'sponsors' && (
+            <section id="sponsors" className="py-20 bg-gray-950 min-h-[80vh] flex flex-col justify-center">
+              <Sponsors lang={lang} appMode={appMode} />
+            </section>
+          )}
+
+          {activeSection === 'awards' && (
+            <section id="awards" className="py-20 bg-gray-950 min-h-[80vh] flex flex-col justify-center">
+              <Awards lang={lang} appMode={appMode} />
+            </section>
+          )}
+
+          {activeSection === 'gallery' && (
+            <Gallery lang={lang} onNavigate={handleNavigate} />
+          )}
+
+          {activeSection === 'contact' && (
+            <Contact lang={lang} onNavigate={handleNavigate} />
+          )}
+
+          {activeSection === 'team-members' && (
+            <TeamDetails lang={lang} onNavigate={handleNavigate} />
+          )}
+        </div>
       </main>
 
       <Footer lang={lang} appMode={appMode} />

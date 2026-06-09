@@ -45,25 +45,25 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
     {
       year: '2025',
       title: { 
-        en: appMode === 'frc' ? 'Reefscape' : 'VEX Season', 
-        tr: appMode === 'frc' ? 'Reefscape' : 'VEX Sezonu' 
+        en: 'VEX & FRC Expansion', 
+        tr: 'VEX & FRC Genişlemesi' 
       },
       desc: { 
-        en: appMode === 'frc' ? 'Adapting to FRC challenges with robust systems.' : 'Focusing on high-frequency intake and precision.', 
-        tr: appMode === 'frc' ? 'Güçlü sistemlerle FRC zorluklarına uyum sağlama.' : 'Yüksek frekanslı alım ve hassasiyete odaklanış.' 
+        en: 'Simultaneously excelling in VEX and stepping into the FIRST Robotics Competition arena.', 
+        tr: 'VEX\'te mükemmelleşmeye devam ederken FIRST Robotik Yarışması arenasına ilk adımımızı attık.' 
       },
       icon: 'fa-gears',
-      color: appMode === 'frc' ? 'bg-blue-600' : 'bg-purple-600'
+      color: 'bg-purple-600'
     },
     {
       year: '2026',
       title: { en: 'Beyond Boundaries', tr: 'Sınırların Ötesi' },
       desc: { 
-        en: 'Defining the future of robotics through relentless innovation and visionary engineering.', 
-        tr: 'Durmak bilmeyen bir inovasyon ruhu ve vizyoner mühendislikle robotik dünyasının geleceğini biz yazıyoruz.' 
+        en: 'Pushing mechanical boundaries in FRC Reefscape and VEX Pushback seasons.', 
+        tr: 'FRC Reefscape ve VEX Pushback sezonlarında mekanik sınırları zorluyoruz.' 
       },
       icon: 'fa-earth-americas',
-      color: appMode === 'frc' ? 'bg-blue-700' : 'bg-yellow-600'
+      color: 'bg-yellow-600'
     }
   ];
 
@@ -72,15 +72,15 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
     tr: { title: 'Bizim', span: 'Yolculuğumuz', subtitle: 'Zaman Çizelgesi 2022 - 2026', hint: 'Keşfetmek için kaydırın' }
   };
 
-  const themeColor = appMode === 'frc' ? 'text-blue-500' : 'text-yellow-500';
-  const themeLine = appMode === 'frc' ? 'via-blue-500/50' : 'via-yellow-500/50';
-  const themeMarker = appMode === 'frc' ? 'border-blue-500 group-hover:bg-blue-500' : 'border-yellow-500 group-hover:bg-yellow-500';
+  const themeColor = 'text-purple-400';
+  const themeLine = 'via-purple-500/50';
+  const themeMarker = 'border-purple-500 group-hover:bg-purple-500';
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white uppercase tracking-tight">
-          {translations[lang].title} <span className={themeColor}>{translations[lang].span}</span>
+        <h2 className="text-3xl md:text-5xl font-black mb-4 text-white uppercase tracking-tight">
+          {translations[lang].title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-blue-400">{translations[lang].span}</span>
         </h2>
         <p className="text-purple-400 font-bold tracking-[0.3em] uppercase opacity-80 mb-4 text-sm">
           {translations[lang].subtitle}
@@ -117,7 +117,7 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
                 </div>
 
                 <div className="relative z-30 group">
-                  <div className={`absolute inset-0 ${appMode === 'frc' ? 'bg-blue-500' : 'bg-yellow-500'} rounded-full blur-md opacity-0 group-hover:opacity-60 transition-opacity`}></div>
+                  <div className="absolute inset-0 bg-purple-500 rounded-full blur-md opacity-0 group-hover:opacity-60 transition-opacity"></div>
                   <div className={`w-12 h-12 bg-gray-950 border-2 ${themeMarker} rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.8)] transform transition-transform duration-300 group-hover:scale-125`}>
                     <i className={`fas ${event.icon} ${event.color.replace('bg-', 'text-')} group-hover:text-white text-lg transition-colors`}></i>
                   </div>

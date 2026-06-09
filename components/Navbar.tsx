@@ -29,14 +29,10 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigat
   ];
 
   const getThemeColor = () => {
-    if (appMode === 'frc') return 'text-blue-500';
-    if (appMode === 'vex') return 'text-yellow-500';
-    return 'text-purple-500';
+    return 'text-purple-400';
   };
 
   const getThemeBorder = () => {
-    if (appMode === 'frc') return 'bg-blue-500';
-    if (appMode === 'vex') return 'bg-yellow-400';
     return 'bg-purple-500';
   };
 
@@ -45,10 +41,6 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigat
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setIsOpen(false);
-    if (appMode === 'general' && id !== 'home' && id !== 'contact') {
-      // If on general home, maybe scroll to sections if they existed, but for now we follow App logic
-      setMode('general'); 
-    }
     onNavigate(id);
   };
 
@@ -60,7 +52,11 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigat
           {/* Logo Area */}
           <div className="flex-shrink-0 flex items-center">
             <button 
-              onClick={() => { setMode('general'); onNavigate('home'); }}
+              onClick={() => { 
+                setMode('general'); 
+                onNavigate('home'); 
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             >
               <span className="text-xl md:text-2xl font-black tracking-tighter text-white heading-font">TAC</span>
@@ -71,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigat
           {/* Desktop Nav Links */}
           <div className="hidden md:flex flex-grow justify-center items-center h-full">
             <div className="flex space-x-6 lg:space-x-8">
-              {appMode !== 'general' ? navLinks.map((link) => (
+              {navLinks.map((link) => (
                 <a
                   key={link.id}
                   href={`#${link.id}`}
@@ -85,23 +81,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigat
                     isActive(link.id) ? 'scale-x-100' : 'scale-x-0'
                   }`}></span>
                 </a>
-              )) : (
-                <div className="flex items-center space-x-6">
-                   <button 
-                     onClick={() => setMode('vex')} 
-                     className="text-[10px] font-black tracking-[0.3em] text-yellow-500 hover:text-white transition-all heading-font uppercase"
-                   >
-                     {translations[lang].switchVex}
-                   </button>
-                   <div className="w-[1px] h-4 bg-white/10"></div>
-                   <button 
-                     onClick={() => setMode('frc')} 
-                     className="text-[10px] font-black tracking-[0.3em] text-blue-500 hover:text-white transition-all heading-font uppercase"
-                   >
-                     {translations[lang].switchFrc}
-                   </button>
-                </div>
-              )}
+              ))}
             </div>
           </div>
 
@@ -140,7 +120,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigat
         }`}
       >
         <div className="flex flex-col items-center space-y-6">
-          {appMode !== 'general' ? navLinks.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.id}
               href={`#${link.id}`}
@@ -149,18 +129,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigat
             >
               {link.name}
             </a>
-          )) : (
-            <>
-              <button onClick={() => { setMode('vex'); setIsOpen(false); }} className="text-xl font-black text-yellow-500 heading-font uppercase tracking-widest">{translations[lang].switchVex}</button>
-              <button onClick={() => { setMode('frc'); setIsOpen(false); }} className="text-xl font-black text-blue-500 heading-font uppercase tracking-widest">{translations[lang].switchFrc}</button>
-            </>
-          )}
-          <button 
-            onClick={() => { setMode('general'); onNavigate('home'); setIsOpen(false); }}
-            className="px-6 py-2 border border-white/10 rounded-full text-[10px] font-black text-gray-500 heading-font uppercase"
-          >
-            TAC BEARS HOME
-          </button>
+          ))}
         </div>
       </div>
     </nav>

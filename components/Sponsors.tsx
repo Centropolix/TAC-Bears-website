@@ -19,7 +19,7 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
       applyTitle: 'Become a Sponsor',
       applyDesc: 'Join our journey and get featured on our robot, website, and social media.',
       applyBtn: 'Fill Out Sponsorship Form',
-      noSponsors: appMode === 'frc' ? 'FRC Sponsorship opportunities are open.' : 'VEX Sponsorship opportunities are open.'
+      noSponsors: 'VEX & FRC Sponsorship opportunities are open.'
     },
     tr: {
       title: 'Sponsorlarımız',
@@ -29,13 +29,13 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
       applyTitle: 'Sponsorumuz Olun',
       applyDesc: 'Yolculuğumuza katılın; robotumuzda, web sitemizde ve sosyal medyamızda yer alın.',
       applyBtn: 'Sponsorluk Formunu Doldur',
-      noSponsors: appMode === 'frc' ? 'FRC sezonu sponsorluk başvuruları devam etmektedir.' : 'VEX sezonu sponsorluk başvuruları devam etmektedir.'
+      noSponsors: 'VEX & FRC sezonu sponsorluk başvuruları devam etmektedir.'
     }
   };
 
-  const themeColor = appMode === 'frc' ? 'text-blue-500' : 'text-yellow-500';
-  const themeBg = appMode === 'frc' ? 'bg-blue-500 shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-yellow-500 shadow-[0_0_20px_rgba(234,179,8,0.3)]';
-  const themeGlow = appMode === 'frc' ? 'from-blue-600 to-purple-500' : 'from-purple-600 to-yellow-500';
+  const themeColor = 'text-purple-400';
+  const themeBg = 'bg-purple-600 shadow-[0_0_20px_rgba(147,51,234,0.3)] hover:bg-purple-500 text-white';
+  const themeGlow = 'from-yellow-400 via-purple-500 to-blue-500';
 
   const sponsorsList = [
     {
@@ -80,7 +80,7 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
       <div className="relative group">
         <div className={`absolute -inset-1 bg-gradient-to-r ${themeGlow} rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200`}></div>
         <div className="relative bg-gray-900 border border-purple-500/20 rounded-3xl p-8 md:p-12 overflow-hidden">
-          <div className={`absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 ${appMode === 'frc' ? 'bg-blue-500/5' : 'bg-yellow-500/5'} rounded-full blur-[80px]`}></div>
+          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-purple-500/5 rounded-full blur-[80px]"></div>
           <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-purple-600/5 rounded-full blur-[80px]"></div>
 
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
@@ -97,7 +97,7 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
               href={formsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className={`w-full md:w-auto px-8 py-5 ${themeBg} text-gray-950 font-bold rounded-2xl hover:bg-white hover:scale-105 transition-all duration-300 heading-font text-center uppercase tracking-wider`}
+              className={`w-full md:w-auto px-8 py-5 ${themeBg} text-white font-bold rounded-2xl hover:scale-105 transition-all duration-300 heading-font text-center uppercase tracking-wider`}
             >
               <i className="fas fa-file-signature mr-3"></i>
               {translations[lang].applyBtn}
