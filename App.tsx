@@ -42,7 +42,7 @@ const App: React.FC = () => {
       }
     };
     window.addEventListener('hashchange', handleHashChange);
-    handleHashChange(); 
+    handleHashChange();
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [activeSection]);
 
@@ -51,46 +51,46 @@ const App: React.FC = () => {
   }, [activeSection]);
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-purple-500 selection:text-white bg-[#030712] text-gray-100 overflow-x-hidden">
-      <Navbar 
-        activeSection={activeSection} 
-        lang={lang} 
-        setLang={setLang} 
-        onNavigate={handleNavigate} 
-        appMode={appMode} 
+    <div className="min-h-screen flex flex-col bg-[var(--paper)] text-[var(--ink)] overflow-x-hidden selection:bg-[var(--ink)] selection:text-[var(--paper)]">
+      <Navbar
+        activeSection={activeSection}
+        lang={lang}
+        setLang={setLang}
+        onNavigate={handleNavigate}
+        appMode={appMode}
         setMode={setAppMode}
       />
-      
+
       <main className="flex-grow">
-        <div className="pt-20">
+        <div className="pt-16">
           {activeSection === 'home' && (
             <>
               <section id="home">
                 <Hero lang={lang} appMode={appMode} />
               </section>
-              <section id="timeline" className="py-20 bg-gray-950">
+              <section id="timeline" className="pt-28 md:pt-40 pb-20 md:pb-28">
                 <Timeline lang={lang} appMode={appMode} />
               </section>
-              <section id="instagram" className="py-20 bg-gray-900/20">
+              <section id="instagram">
                 <Instagram lang={lang} appMode={appMode} />
               </section>
             </>
           )}
 
           {activeSection === 'team' && (
-            <section id="team" className="py-20 bg-gray-950 min-h-[80vh] flex flex-col justify-center">
+            <section id="team" className="py-20 md:py-28">
               <Team lang={lang} onNavigate={handleNavigate} appMode={appMode} />
             </section>
           )}
 
           {activeSection === 'sponsors' && (
-            <section id="sponsors" className="py-20 bg-gray-950 min-h-[80vh] flex flex-col justify-center">
+            <section id="sponsors" className="py-20 md:py-28">
               <Sponsors lang={lang} appMode={appMode} />
             </section>
           )}
 
           {activeSection === 'awards' && (
-            <section id="awards" className="py-20 bg-gray-950 min-h-[80vh] flex flex-col justify-center">
+            <section id="awards" className="py-20 md:py-28">
               <Awards lang={lang} appMode={appMode} />
             </section>
           )}

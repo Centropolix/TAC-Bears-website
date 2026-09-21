@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Language } from '../App';
 
 interface GalleryProps {
@@ -7,7 +7,7 @@ interface GalleryProps {
 }
 
 const Gallery: React.FC<GalleryProps> = ({ lang, onNavigate }) => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selected, setSelected] = useState<{ url: string; title: string } | null>(null);
 
   const images = [
     { url: "https://lh3.googleusercontent.com/d/1F0FoGCklk462cNMQrz_IfVOp9j2EdY5_", title: "Season Highlights" },
@@ -31,73 +31,82 @@ const Gallery: React.FC<GalleryProps> = ({ lang, onNavigate }) => {
     }
   };
 
-  return (
-    <div className="min-h-screen pt-24 pb-20 px-4 bg-gray-950">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-4 uppercase tracking-tighter">
-            {translations[lang].title} <span className="text-yellow-500">{translations[lang].titleSpan}</span>
-          </h2>
-          <p className="text-purple-400 font-bold tracking-[0.3em] uppercase opacity-80 mb-8">
-            {translations[lang].subtitle}
-          </p>
-          <div className="w-24 h-1 bg-purple-600 mx-auto rounded-full"></div>
-        </div>
+  const t = translations[lang];
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {images.map((img, index) => (
-            <div 
-              key={index}
-              onClick={() => setSelectedImage(img.url)}
-              className="group relative aspect-video overflow-hidden rounded-2xl border-2 border-purple-900/30 cursor-pointer bg-gray-900 shadow-2xl transition-all duration-300 hover:border-yellow-500/50"
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelected(null);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [selected]);
+
+  return (
+    <div className="max-w-[1500px] mx-auto px-5 sm:px-8 py-16 md:py-24">
+
+      <header className="mb-12 md:mb-16">
+        <h2 className="t-mega bleed-left text-[clamp(2.6rem,8vw,6rem)]">
+          {t.title} {t.titleSpan}
+        </h2>
+        <p className="t-meta mt-2 text-[14px] text-[var(--ink-2)]">
+          {t.subtitle}
+        </p>
+      </header>
+
+      <div className="grid md:grid-cols-2 gap-5 md:gap-8">
+        {images.map((img, index) => (
+          <figure key={index}>
+            <button
+              onClick={() => setSelected(img)}
+              className="group block w-full aspect-[16/10] overflow-hidden bg-[#E3E6E9] ring-1 ring-[var(--ink)]/10 hover:ring-[var(--flame)] hover:ring-2 transition-colors"
             >
-              <img 
-                src={img.url} 
+              <img
+                src={img.url}
                 alt={img.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-100"
+                className="w-full h-full object-cover"
                 loading="lazy"
               />
-              
-              <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-purple-600/40 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-purple-500/30">
-                <i className="fas fa-search-plus text-white"></i>
-              </div>
-              <div className="absolute bottom-4 left-6 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                <p className="text-yellow-500 font-bold heading-font text-xs tracking-widest uppercase drop-shadow-md">{img.title}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-20 text-center">
-          <a 
-            href="#home"
-            onClick={(e) => {
-              e.preventDefault();
-              onNavigate('home');
-            }}
-            className="inline-flex items-center space-x-3 text-gray-400 hover:text-white transition-colors heading-font uppercase tracking-widest text-sm"
-          >
-            <i className="fas fa-arrow-left"></i>
-            <span>{translations[lang].back}</span>
-          </a>
-        </div>
+            </button>
+            <figcaption className="t-meta mt-2.5 text-[12.5px] text-[var(--ink-2)]">
+              {img.title}
+            </figcaption>
+          </figure>
+        ))}
       </div>
 
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-[200] bg-gray-950/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
-          onClick={() => setSelectedImage(null)}
+      <div className="mt-16">
+        <a
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault();
+            onNavigate('home');
+          }}
+          className="t-meta inline-flex items-center gap-3 text-[13px] text-[var(--ink-2)] hover:text-[var(--ink)] border-b-2 border-[var(--flame)] pb-1 transition-colors"
         >
-          <button 
-            className="absolute top-10 right-10 text-white text-4xl hover:text-yellow-500 transition-colors z-[210] p-4"
-            onClick={() => setSelectedImage(null)}
+          <i className="fas fa-arrow-left text-[11px]"></i>
+          {t.back}
+        </a>
+      </div>
+
+      {selected && (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-10"
+          style={{ backgroundColor: 'rgba(25, 30, 36, 0.97)' }}
+          onClick={() => setSelected(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            className="t-meta absolute top-5 right-5 text-[13px] text-white/70 hover:text-white px-4 py-2 border border-white/25 hover:border-white/60 transition-colors"
+            onClick={() => setSelected(null)}
           >
-            <i className="fas fa-times"></i>
+            {t.close}
           </button>
-          <img 
-            src={selectedImage} 
-            className="max-w-full max-h-full object-contain rounded-xl shadow-2xl border border-white/10"
-            alt="Full size"
+          <img
+            src={selected.url}
+            className="max-w-full max-h-full object-contain"
+            alt={selected.title}
           />
         </div>
       )}

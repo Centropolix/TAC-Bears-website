@@ -8,7 +8,7 @@ interface ContactProps {
 }
 
 const Contact: React.FC<ContactProps> = ({ lang, onNavigate }) => {
-  const email = "robotics@my.tac.k12.tr"; 
+  const email = "robotics@my.tac.k12.tr";
 
   const translations = {
     en: {
@@ -27,50 +27,47 @@ const Contact: React.FC<ContactProps> = ({ lang, onNavigate }) => {
     }
   };
 
+  const t = translations[lang];
+
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-20 bg-gray-950 relative overflow-hidden">
-      {/* Arka Plan Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-600 rounded-full blur-[150px]"></div>
-      </div>
+    <div className="on-colour min-h-[70vh]" style={{ background: 'var(--flame)' }}>
+      <div className="max-w-[1500px] mx-auto px-5 sm:px-8 py-20 md:py-28">
 
-      <div className="relative z-10 max-w-2xl w-full text-center">
-        <div className="inline-block p-1 bg-gradient-to-tr from-purple-600 to-yellow-500 rounded-3xl shadow-2xl">
-          <div className="bg-gray-900 rounded-[calc(1.5rem-1px)] p-8 md:p-12">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-2 uppercase tracking-tight">
-              {translations[lang].title} <span className="text-yellow-500">{translations[lang].titleSpan}</span>
-            </h2>
-            <div className="w-16 h-1 bg-purple-600 mx-auto mb-8 rounded-full"></div>
-            
-            <p className="text-gray-400 text-lg mb-10 leading-relaxed">
-              {translations[lang].description}
-            </p>
+        <header className="mb-10">
+          <h2 className="t-mega bleed-left text-white text-[clamp(2.6rem,9vw,6.5rem)]">
+            {t.title} {t.titleSpan}
+          </h2>
+          <p className="t-meta mt-4 text-[13px] text-white">
+            {t.subtitle}
+          </p>
+        </header>
 
-            <div className="group relative inline-block w-full">
-              <a 
-                href={`mailto:${email}`}
-                className="block w-full py-6 px-4 bg-gray-800 border border-purple-500/30 rounded-2xl text-lg md:text-xl font-bold text-yellow-400 hover:bg-purple-600 hover:text-white transition-all duration-300 heading-font break-all"
-              >
-                <i className="fas fa-envelope mr-3 text-purple-400 group-hover:text-white"></i>
-                {email}
-              </a>
-              <div className="absolute -inset-2 bg-gradient-to-r from-purple-600 to-yellow-500 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200 pointer-events-none"></div>
-            </div>
+        <p className="text-[17px] leading-[1.7] text-white max-w-[52ch] mb-12">
+          {t.description}
+        </p>
 
-            <div className="mt-12">
-              <a 
-                href="#home"
-                onClick={(e) => {
-                  e.preventDefault();
-                  onNavigate('home');
-                }}
-                className="text-gray-500 hover:text-white transition-colors uppercase tracking-widest text-sm font-bold flex items-center justify-center space-x-2"
-              >
-                <i className="fas fa-arrow-left"></i>
-                <span>{translations[lang].back}</span>
-              </a>
-            </div>
-          </div>
+        {/* The email is the whole point of this page, so it is the largest thing on it */}
+        <a
+          href={`mailto:${email}`}
+          className="group block bg-[var(--ink)] hover:bg-[var(--amber)] transition-colors px-6 py-10 md:px-10 md:py-14"
+        >
+          <span className="t-head block text-[clamp(1.3rem,5vw,3.4rem)] break-all leading-tight text-white group-hover:text-[var(--ink)] transition-colors">
+            {email}
+          </span>
+        </a>
+
+        <div className="mt-14">
+          <a
+            href="#home"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate('home');
+            }}
+            className="t-meta inline-flex items-center gap-3 text-[13px] text-white border-b-2 border-white pb-1 hover:text-[var(--amber)] hover:border-[var(--amber)] transition-colors"
+          >
+            <i className="fas fa-arrow-left text-[11px]"></i>
+            {t.back}
+          </a>
         </div>
       </div>
     </div>

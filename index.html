@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="tr" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,21 +8,98 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,400..900&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --paper:    #FFFFFF;
+        --mist:     #F3F4F6;
+        --ink:      #0E1116;
+        --ink-2:    #4B535E;
+
+        /* Loud, flat, competition-poster colour: black, purple, yellow */
+        --flame:    #7A28FF;   /* the team's own signal colour */
+        --electric: #0E1116;   /* deep black field */
+        --amber:    #FFC400;   /* yellow — only ever on a dark ground */
+
+        /* Accessible text version on white */
+        --flame-tx: #6B21D8;
+      }
+
+      * { -webkit-font-smoothing: antialiased; }
+
       body {
-        font-family: 'Inter', sans-serif;
-        background-color: #030712;
+        font-family: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        font-variation-settings: 'wdth' 100;
+        background-color: var(--paper);
+        color: var(--ink);
       }
-      h1, h2, h3, .heading-font {
-        font-family: 'Orbitron', sans-serif;
+
+      /* Poster-scale display: wide, heavy, tightly set */
+      .t-mega {
+        font-variation-settings: 'wdth' 112, 'wght' 900;
+        letter-spacing: -0.045em;
+        line-height: 0.82;
+        text-transform: uppercase;
       }
-      .hide-scrollbar::-webkit-scrollbar {
-        display: none;
+
+      .t-head {
+        font-variation-settings: 'wdth' 106, 'wght' 800;
+        letter-spacing: -0.03em;
+        line-height: 1.0;
       }
-      .hide-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
+
+      .t-sub {
+        font-variation-settings: 'wdth' 100, 'wght' 700;
+        letter-spacing: -0.015em;
+        line-height: 1.15;
+      }
+
+      .t-meta {
+        font-variation-settings: 'wdth' 88, 'wght' 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .t-fig {
+        font-variation-settings: 'wdth' 108, 'wght' 900;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.04em;
+        line-height: 0.8;
+      }
+
+      p { text-wrap: pretty; }
+      h1, h2, h3 { text-wrap: balance; }
+
+      /* Type that runs past its own box, the way a printed poster crops */
+      .bleed-left { margin-left: -0.055em; }
+
+      .hatch {
+        background-color: var(--mist);
+        background-image: repeating-linear-gradient(
+          -45deg, transparent 0 9px, rgba(14, 17, 22, 0.07) 9px 11px
+        );
+      }
+
+      .hide-scrollbar::-webkit-scrollbar { display: none; }
+      .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      :focus-visible { outline: 3px solid var(--electric); outline-offset: 2px; }
+      .on-colour :focus-visible { outline-color: #FFFFFF; }
+
+      /* One orchestrated entrance, nothing else moves on its own */
+      @keyframes rise {
+        from { opacity: 0; transform: translateY(26px); }
+        to   { opacity: 1; transform: none; }
+      }
+      .enter { animation: rise 0.75s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
       }
     </style>
   <script type="importmap">
@@ -31,15 +107,13 @@
   "imports": {
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3"
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-gray-950 text-gray-100">
+  <body>
     <div id="root"></div>
-    <script type="module" src="index.tsx"></script>
-  <script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>

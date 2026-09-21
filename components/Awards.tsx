@@ -10,61 +10,61 @@ const Awards: React.FC<AwardsProps> = ({ lang, appMode }) => {
   const awards = [
     {
       year: '2025',
-      title: { 
-        en: 'Judges Award', 
-        tr: 'Jüri Özel Ödülü' 
+      title: {
+        en: 'Judges Award',
+        tr: 'Jüri Özel Ödülü'
       },
-      event: { 
-        en: 'Recognized by the judges for our team spirit and exemplary engineering process.', 
-        tr: 'Takım ruhumuz ve örnek mühendislik sürecimiz nedeniyle jüri tarafından ödüle layık görüldük.' 
+      event: {
+        en: 'Recognized by the judges for our team spirit and exemplary engineering process.',
+        tr: 'Takım ruhumuz ve örnek mühendislik sürecimiz nedeniyle jüri tarafından ödüle layık görüldük.'
       },
       icon: 'fa-award'
     },
     {
       year: '2024',
-      title: { 
-        en: 'Excellence Award', 
-        tr: 'Excellence (Mükemmellik) Ödülü' 
+      title: {
+        en: 'Excellence Award',
+        tr: 'Excellence (Mükemmellik) Ödülü'
       },
-      event: { 
-        en: 'The highest honor in VEX Robotics, awarded to the team with the most complete and high-quality program.', 
-        tr: 'VEX Robotik\'teki en yüksek onur ödülü; en eksiksiz ve yüksek kaliteli programa sahip takıma verilir.' 
+      event: {
+        en: 'The highest honor in VEX Robotics, awarded to the team with the most complete and high-quality program.',
+        tr: 'VEX Robotik\'teki en yüksek onur ödülü; en eksiksiz ve yüksek kaliteli programa sahip takıma verilir.'
       },
       icon: 'fa-trophy'
     },
     {
       year: '2023',
-      title: { 
-        en: 'Judges Award', 
-        tr: 'Jüri Özel Ödülü' 
+      title: {
+        en: 'Judges Award',
+        tr: 'Jüri Özel Ödülü'
       },
-      event: { 
-        en: 'Awarded for our unique design process and exemplary team interview performance.', 
-        tr: 'Eşsiz tasarım sürecimiz ve örnek teşkil eden takım mülakatı performansımız için verildi.' 
+      event: {
+        en: 'Awarded for our unique design process and exemplary team interview performance.',
+        tr: 'Eşsiz tasarım sürecimiz ve örnek teşkil eden takım mülakatı performansımız için verildi.'
       },
       icon: 'fa-gavel'
     },
     {
       year: '2023',
-      title: { 
-        en: 'Innovate Award', 
-        tr: 'Innovate Ödülü' 
+      title: {
+        en: 'Innovate Award',
+        tr: 'Innovate Ödülü'
       },
-      event: { 
-        en: 'Recognized for our innovative mechanical solutions during the VEX Spin Up season.', 
-        tr: 'VEX Spin Up sezonunda geliştirdiğimiz yenilikçi mekanik çözümlerle bu prestijli ödülü kazandık.' 
+      event: {
+        en: 'Recognized for our innovative mechanical solutions during the VEX Spin Up season.',
+        tr: 'VEX Spin Up sezonunda geliştirdiğimiz yenilikçi mekanik çözümlerle bu prestijli ödülü kazandık.'
       },
       icon: 'fa-lightbulb'
     },
     {
       year: '2022',
-      title: { 
-        en: 'Tournament Finalists (2nd Place)', 
-        tr: 'Turnuva Finalisti (2.lik)' 
+      title: {
+        en: 'Tournament Finalists (2nd Place)',
+        tr: 'Turnuva Finalisti (2.lik)'
       },
-      event: { 
-        en: 'Our very first tournament experience at VEX Tipping Point, where we reached the finals.', 
-        tr: 'İlk turnuva deneyimimiz olan VEX Tipping Point\'te finale yükselerek büyük bir başarı elde ettik.' 
+      event: {
+        en: 'Our very first tournament experience at VEX Tipping Point, where we reached the finals.',
+        tr: 'İlk turnuva deneyimimiz olan VEX Tipping Point\'te finale yükselerek büyük bir başarı elde ettik.'
       },
       icon: 'fa-trophy'
     }
@@ -89,51 +89,46 @@ const Awards: React.FC<AwardsProps> = ({ lang, appMode }) => {
     }
   };
 
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-black mb-4 text-white uppercase tracking-tight">
-          {translations[lang].title}
-        </h2>
-        <p className="text-purple-400 font-bold tracking-[0.3em] uppercase opacity-80 mb-6 text-sm">
-          {translations[lang].subtitle}
-        </p>
-        <div className="w-24 h-1 bg-purple-600 mx-auto rounded-full"></div>
-      </div>
+  const t = translations[lang];
+  const hues = ['var(--flame)', 'var(--electric)', 'var(--flame)', 'var(--electric)', 'var(--flame)'];
 
-      <div className="space-y-12">
-        {/* VEX Awards Section */}
-        <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {awards.map((award, index) => (
-              <div 
-                key={index} 
-                className="group relative bg-gray-900/50 border border-purple-900/30 p-8 rounded-3xl hover:border-yellow-500/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col items-center"
+  return (
+    <div className="max-w-[1500px] mx-auto px-5 sm:px-8">
+
+      <header className="mb-12 md:mb-20">
+        <h2 className="t-mega bleed-left text-[clamp(2.6rem,8vw,6rem)] max-w-[16ch]">
+          {t.title}
+        </h2>
+        <p className="t-meta mt-4 text-[13px] text-[var(--ink-2)]">
+          {t.subtitle}
+        </p>
+      </header>
+
+      {/* Each win gets the scale of a scoreboard entry */}
+      <ul>
+        {awards.map((award, index) => (
+          <li
+            key={index}
+            className="group grid md:grid-cols-[minmax(0,5fr)_minmax(0,4fr)] gap-x-10 gap-y-3 py-8 md:py-10 border-t-2 border-[var(--ink)]"
+          >
+            <div className="flex items-start gap-5 md:gap-8">
+              <span
+                className="t-fig shrink-0 text-[clamp(2.4rem,5vw,4.2rem)]"
+                style={{ color: hues[index % hues.length] }}
               >
-                <div className="absolute -top-10 -right-10 w-32 h-32 bg-purple-600/10 rounded-full blur-3xl group-hover:bg-yellow-500/10 transition-colors"></div>
-                
-                <div className="relative z-10 text-center">
-                  <div className="w-16 h-16 bg-gray-950 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-purple-500/20 group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                    <i className={`fas ${award.icon} text-2xl text-yellow-500 group-hover:text-white transition-colors`}></i>
-                  </div>
-                  
-                  <span className="text-purple-400 text-xs font-bold tracking-widest uppercase mb-2 block heading-font">
-                    {award.year}
-                  </span>
-                  
-                  <h3 className="text-lg font-bold text-white mb-3 heading-font group-hover:text-yellow-500 transition-colors min-h-[3rem] flex items-center justify-center">
-                    {award.title[lang]}
-                  </h3>
-                  
-                  <p className="text-gray-500 text-sm leading-relaxed">
-                    {award.event[lang]}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+                {award.year}
+              </span>
+              <h3 className="t-head text-[clamp(1.3rem,2.6vw,2.1rem)] pt-1">
+                {award.title[lang]}
+              </h3>
+            </div>
+
+            <p className="text-[15.5px] leading-[1.65] text-[var(--ink-2)] max-w-[56ch] md:pt-3">
+              {award.event[lang]}
+            </p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

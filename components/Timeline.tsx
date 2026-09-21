@@ -12,9 +12,9 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
     {
       year: '2022',
       title: { en: 'The Genesis', tr: 'Başlangıç' },
-      desc: { 
-        en: 'The foundation of TAC Bears. Our first step into the VEX universe.', 
-        tr: 'TAC Bears\'ın kuruluşu. VEX evrenine ilk adım.' 
+      desc: {
+        en: 'The foundation of TAC Bears. Our first step into the VEX universe.',
+        tr: 'TAC Bears\'ın kuruluşu. VEX evrenine ilk adım.'
       },
       icon: 'fa-seedling',
       color: 'bg-purple-500',
@@ -23,9 +23,9 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
     {
       year: '2023',
       title: { en: 'Rapid Expansion', tr: 'Hızlı Yükseliş' },
-      desc: { 
-        en: 'First national appearances and team growth.', 
-        tr: 'İlk ulusal turnuvalar ve ekibin büyümesi.' 
+      desc: {
+        en: 'First national appearances and team growth.',
+        tr: 'İlk ulusal turnuvalar ve ekibin büyümesi.'
       },
       icon: 'fa-rocket',
       color: 'bg-blue-500',
@@ -34,9 +34,9 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
     {
       year: '2024',
       title: { en: 'Golden Era', tr: 'Altın Çağ' },
-      desc: { 
-        en: 'Excellence and Design awards at Signature events.', 
-        tr: 'Signature etkinliklerinde Mükemmellik ve Tasarım ödülleri.' 
+      desc: {
+        en: 'Excellence and Design awards at Signature events.',
+        tr: 'Signature etkinliklerinde Mükemmellik ve Tasarım ödülleri.'
       },
       icon: 'fa-trophy',
       color: 'bg-yellow-500',
@@ -44,13 +44,13 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
     },
     {
       year: '2025',
-      title: { 
-        en: 'VEX & FRC Expansion', 
-        tr: 'VEX & FRC Genişlemesi' 
+      title: {
+        en: 'VEX & FRC Expansion',
+        tr: 'VEX & FRC Genişlemesi'
       },
-      desc: { 
-        en: 'Simultaneously excelling in VEX and stepping into the FIRST Robotics Competition arena.', 
-        tr: 'VEX\'te mükemmelleşmeye devam ederken FIRST Robotik Yarışması arenasına ilk adımımızı attık.' 
+      desc: {
+        en: 'Simultaneously excelling in VEX and stepping into the FIRST Robotics Competition arena.',
+        tr: 'VEX\'te mükemmelleşmeye devam ederken FIRST Robotik Yarışması arenasına ilk adımımızı attık.'
       },
       icon: 'fa-gears',
       color: 'bg-purple-600'
@@ -58,9 +58,9 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
     {
       year: '2026',
       title: { en: 'Beyond Boundaries', tr: 'Sınırların Ötesi' },
-      desc: { 
-        en: 'Pushing mechanical boundaries in FRC Reefscape and VEX Pushback seasons.', 
-        tr: 'FRC Reefscape ve VEX Pushback sezonlarında mekanik sınırları zorluyoruz.' 
+      desc: {
+        en: 'Pushing mechanical boundaries in FRC Reefscape and VEX Pushback seasons.',
+        tr: 'FRC Reefscape ve VEX Pushback sezonlarında mekanik sınırları zorluyoruz.'
       },
       icon: 'fa-earth-americas',
       color: 'bg-yellow-600'
@@ -72,65 +72,61 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
     tr: { title: 'Bizim', span: 'Yolculuğumuz', subtitle: 'Zaman Çizelgesi 2022 - 2026', hint: 'Keşfetmek için kaydırın' }
   };
 
-  const themeColor = 'text-purple-400';
-  const themeLine = 'via-purple-500/50';
-  const themeMarker = 'border-purple-500 group-hover:bg-purple-500';
+  const t = translations[lang];
+  const current = events.length - 1;
+  const hues = ['var(--flame)', 'var(--electric)', 'var(--flame)', 'var(--electric)', 'var(--flame)'];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-5xl font-black mb-4 text-white uppercase tracking-tight">
-          {translations[lang].title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-blue-400">{translations[lang].span}</span>
+    <div className="max-w-[1500px] mx-auto px-5 sm:px-8">
+
+      <header className="mb-12 md:mb-16">
+        <h2 className="t-mega bleed-left text-[clamp(2.6rem,8vw,6rem)]">
+          {t.title} {t.span}
         </h2>
-        <p className="text-purple-400 font-bold tracking-[0.3em] uppercase opacity-80 mb-4 text-sm">
-          {translations[lang].subtitle}
+        <p className="t-meta mt-4 text-[13px] text-[var(--ink-2)]">
+          {t.subtitle}
         </p>
-        <div className="w-24 h-1 bg-purple-600 mx-auto rounded-full"></div>
-      </div>
+      </header>
 
-      <div className="relative mt-24 mb-24">
-        <div className="hide-scrollbar overflow-x-auto overflow-y-visible cursor-grab active:cursor-grabbing pb-12 pt-12">
-          <div className="flex min-w-[1200px] lg:min-w-full justify-between items-center relative px-10 h-[500px]">
-            
-            <div className={`absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-purple-900 ${themeLine} to-purple-900 -translate-y-1/2 rounded-full shadow-[0_0_10px_rgba(234,179,8,0.1)]`}></div>
-
-            {events.map((event, index) => (
-              <div key={index} className="relative flex flex-col items-center flex-1">
-                <div className={`absolute left-1/2 -translate-x-1/2 w-0.5 bg-gradient-to-b from-transparent via-purple-500 to-transparent opacity-40 ${index % 2 === 0 ? 'bottom-1/2 h-24 mb-5' : 'top-1/2 h-24 mt-5'}`}></div>
-
-                <div className={`absolute w-72 p-0 rounded-2xl bg-gray-900/60 backdrop-blur-md border border-purple-500/20 shadow-xl transition-all duration-500 hover:scale-105 hover:bg-gray-800/80 hover:border-purple-500/40 group z-20 overflow-hidden ${index % 2 === 0 ? 'bottom-[calc(50%+4rem)]' : 'top-[calc(50%+4rem)]'}`}>
-                  {event.image && (
-                    <div className="w-full h-32 overflow-hidden border-b border-purple-500/10">
-                      <img src={event.image} alt={event.year} className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
-                    </div>
-                  )}
-                  <div className="p-5">
-                    <div className={`absolute top-0 left-0 w-full h-1 rounded-t-2xl ${event.color} opacity-50 group-hover:opacity-100 transition-opacity`}></div>
-                    <span className={`${themeColor} font-black heading-font text-xl mb-1 block`}>{event.year}</span>
-                    <h3 className="text-sm font-bold text-white mb-2 heading-font uppercase tracking-wider group-hover:text-purple-400 transition-colors">
-                      {event.title[lang]}
-                    </h3>
-                    <p className="text-gray-400 text-xs leading-relaxed">
-                      {event.desc[lang]}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="relative z-30 group">
-                  <div className="absolute inset-0 bg-purple-500 rounded-full blur-md opacity-0 group-hover:opacity-60 transition-opacity"></div>
-                  <div className={`w-12 h-12 bg-gray-950 border-2 ${themeMarker} rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,0,0,0.8)] transform transition-transform duration-300 group-hover:scale-125`}>
-                    <i className={`fas ${event.icon} ${event.color.replace('bg-', 'text-')} group-hover:text-white text-lg transition-colors`}></i>
-                  </div>
-                </div>
+      <div className="hide-scrollbar overflow-x-auto lg:overflow-visible -mx-5 px-5 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0">
+        <ol className="flex lg:grid lg:grid-cols-5 gap-5 lg:gap-0 min-w-[980px] lg:min-w-0">
+          {events.map((event, index) => (
+            <li
+              key={index}
+              className="w-[272px] lg:w-auto shrink-0 lg:px-5 lg:first:pl-0 lg:last:pr-0"
+            >
+              {/* The year is the graphic; the photograph sits under it */}
+              <div className="t-fig bleed-left text-[clamp(2.8rem,4.6vw,4.4rem)]" style={{ color: hues[index % hues.length] }}>
+                {event.year}
               </div>
-            ))}
-          </div>
-        </div>
-        <div className="flex items-center justify-center mt-8 text-gray-500 text-[10px] uppercase tracking-[0.2em] font-bold animate-pulse">
-          <i className="fas fa-arrows-left-right mr-3"></i>
-          {translations[lang].hint}
-        </div>
+
+              {event.image ? (
+                <div className="mt-4 aspect-[5/4] overflow-hidden bg-[var(--mist)]">
+                  <img
+                    src={event.image}
+                    alt=""
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="mt-4 aspect-[5/4] hatch" />
+              )}
+
+              <h3 className="t-head mt-5 text-[clamp(1.15rem,1.7vw,1.5rem)]">
+                {event.title[lang]}
+              </h3>
+              <p className="mt-2.5 text-[14.5px] leading-[1.6] text-[var(--ink-2)] max-w-[34ch]">
+                {event.desc[lang]}
+              </p>
+            </li>
+          ))}
+        </ol>
       </div>
+
+      <p className="lg:hidden t-meta mt-6 text-[12px] text-[var(--ink-2)]">
+        {t.hint}
+      </p>
     </div>
   );
 };

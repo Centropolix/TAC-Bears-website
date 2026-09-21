@@ -8,7 +8,7 @@ interface SponsorsProps {
 }
 
 const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
-  const formsLink = "https://docs.google.com/forms/d/e/1FAIpQLSelwFPq3E6fVLM_6fhWel7zrW0IYeubufBP0hTL9CYxHdAgNQ/viewform?usp=publish-editor"; 
+  const formsLink = "https://docs.google.com/forms/d/e/1FAIpQLSelwFPq3E6fVLM_6fhWel7zrW0IYeubufBP0hTL9CYxHdAgNQ/viewform?usp=publish-editor";
 
   const translations = {
     en: {
@@ -33,10 +33,6 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
     }
   };
 
-  const themeColor = 'text-purple-400';
-  const themeBg = 'bg-purple-600 shadow-[0_0_20px_rgba(147,51,234,0.3)] hover:bg-purple-500 text-white';
-  const themeGlow = 'from-yellow-400 via-purple-500 to-blue-500';
-
   const sponsorsList = [
     {
       name: "Sponsor",
@@ -48,62 +44,63 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
     }
   ];
 
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white uppercase tracking-tight">
-          {translations[lang].title} <span className={themeColor}>{translations[lang].titleSpan}</span>
-        </h2>
-        <div className="w-24 h-1 bg-purple-600 mx-auto rounded-full mb-6"></div>
-        <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-          {translations[lang].description}
-        </p>
-      </div>
+  const t = translations[lang];
 
-      <div className="flex flex-wrap justify-center gap-8 mb-20">
+  return (
+    <div className="max-w-[1500px] mx-auto px-5 sm:px-8">
+
+      <header className="mb-12 md:mb-16">
+        <h2 className="t-mega bleed-left text-[clamp(2.6rem,8vw,6rem)]">
+          {t.title} {t.titleSpan}
+        </h2>
+        <p className="t-meta mt-2 text-[14px] text-[var(--ink-2)]">
+          {t.subtitle}
+        </p>
+        <p className="mt-6 text-[16px] leading-[1.65] text-[var(--ink-2)] max-w-[56ch]">
+          {t.description}
+        </p>
+      </header>
+
+      {/* Logos sit on white — the ground a printed logo is made for */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-16">
         {sponsorsList.map((sponsor, index) => (
-          <div 
-            key={index} 
-            className="group relative bg-[#111827]/40 backdrop-blur-xl rounded-[2.5rem] p-8 border border-white/5 flex items-center justify-center w-72 h-44 transition-all duration-500 hover:-translate-y-2 hover:border-purple-500/30 shadow-xl overflow-hidden"
+          <div
+            key={index}
+            className="bg-white ring-1 ring-[var(--ink)]/10 h-40 flex items-center justify-center p-8"
           >
-            <div className={`absolute inset-0 bg-gradient-to-tr ${themeGlow} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500 pointer-events-none`}></div>
-            <img 
-              src={sponsor.logo} 
-              alt={sponsor.name} 
+            <img
+              src={sponsor.logo}
+              alt={sponsor.name}
               referrerPolicy="no-referrer"
-              className="max-h-24 max-w-[85%] object-contain filter brightness-95 contrast-105 group-hover:brightness-110 transition-all duration-300"
+              className="max-h-20 max-w-full object-contain"
             />
           </div>
         ))}
       </div>
 
-      <div className="relative group">
-        <div className={`absolute -inset-1 bg-gradient-to-r ${themeGlow} rounded-3xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200`}></div>
-        <div className="relative bg-gray-900 border border-purple-500/20 rounded-3xl p-8 md:p-12 overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-purple-500/5 rounded-full blur-[80px]"></div>
-          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-purple-600/5 rounded-full blur-[80px]"></div>
+      <p className="t-meta text-[13px] text-[var(--ink-2)] mb-10 pb-10 border-b-2 border-[var(--ink)]">
+        {t.noSponsors}
+      </p>
 
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-            <div className="text-center md:text-left">
-              <h3 className="text-2xl md:text-4xl font-bold text-white mb-4 heading-font uppercase">
-                {translations[lang].applyTitle}
-              </h3>
-              <p className="text-gray-400 text-lg max-w-md">
-                {translations[lang].applyDesc}
-              </p>
-            </div>
-            
-            <a
-              href={formsLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`w-full md:w-auto px-8 py-5 ${themeBg} text-white font-bold rounded-2xl hover:scale-105 transition-all duration-300 heading-font text-center uppercase tracking-wider`}
-            >
-              <i className="fas fa-file-signature mr-3"></i>
-              {translations[lang].applyBtn}
-            </a>
-          </div>
+      {/* Sponsorship call to action */}
+      <div className="grid md:grid-cols-[minmax(0,1fr)_auto] gap-8 md:gap-16 items-end">
+        <div>
+          <h3 className="t-head text-[clamp(1.5rem,3vw,2.1rem)] max-w-[20ch]">
+            {t.applyTitle}
+          </h3>
+          <p className="mt-3 text-[15.5px] leading-[1.65] text-[var(--ink-2)] max-w-[52ch]">
+            {t.applyDesc}
+          </p>
         </div>
+
+        <a
+          href={formsLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="t-meta shrink-0 inline-flex items-center justify-center px-8 py-4 text-[13.5px] text-white bg-[var(--ink)] hover:bg-[var(--flame)] transition-colors"
+        >
+          {t.applyBtn}
+        </a>
       </div>
     </div>
   );

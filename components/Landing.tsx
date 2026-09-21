@@ -10,7 +10,6 @@ interface LandingProps {
 const Landing: React.FC<LandingProps> = ({ lang, setMode }) => {
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [hoveredMode, setHoveredMode] = useState<AppMode | null>(null);
 
   const quotes = [
     {
@@ -80,146 +79,100 @@ const Landing: React.FC<LandingProps> = ({ lang, setMode }) => {
   const t = translations[lang];
 
   return (
-    <div className="bg-[#030712] text-white selection:bg-purple-600 overflow-x-hidden">
-      
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-purple-600/10 rounded-full blur-[140px] animate-pulse"></div>
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#030712]"></div>
-        </div>
+    <div className="bg-[var(--paper)] text-[var(--ink)]">
 
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <h1 className="text-5xl sm:text-7xl md:text-[10rem] lg:text-[12rem] font-black heading-font tracking-tighter leading-none mb-10 text-transparent bg-clip-text bg-gradient-to-b from-white to-white/30 select-none">
+      {/* Masthead: the record, stated as figures */}
+      <section className="bg-[var(--ink)] text-[var(--paper)]">
+        <div className="max-w-[1500px] mx-auto px-5 sm:px-8 pt-20 pb-16 md:pt-28 md:pb-20">
+          <h1 className="t-mega text-[clamp(3.4rem,11vw,7.5rem)] text-white">
             {t.heroTitle}
           </h1>
 
-          <div className="flex flex-wrap justify-center gap-12 mt-16">
+          <dl className="mt-12 flex flex-wrap border-t border-white/15">
             {t.stats.map((stat, i) => (
-              <div key={i} className="text-center group cursor-default">
-                <div className="text-5xl font-black heading-font mb-2 group-hover:text-purple-500 transition-colors">{stat.value}</div>
-                <div className="text-[11px] font-bold tracking-[0.4em] text-gray-500 uppercase">{stat.label}</div>
+              <div
+                key={i}
+                className={`pt-4 pr-10 ${i > 0 ? 'pl-10 border-l border-white/15' : ''}`}
+              >
+                <dt className="t-fig text-[30px] md:text-[36px] text-white leading-none">
+                  {stat.value}
+                </dt>
+                <dd className="t-meta mt-1.5 text-[12px] text-white/50">{stat.label}</dd>
               </div>
             ))}
-          </div>
-        </div>
-
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30">
-          <i className="fas fa-chevron-down text-2xl"></i>
+          </dl>
         </div>
       </section>
 
-      {/* Split Screen Mode Selector - EXACT 50/50 SPLIT */}
-      <section id="arena-select" className="relative h-screen w-full flex flex-col md:flex-row overflow-hidden bg-black border-y border-white/10">
-        
-        {/* VEX SIDE (Left/Top) */}
-        <div 
-          onMouseEnter={() => setHoveredMode('vex')}
-          onMouseLeave={() => setHoveredMode(null)}
-          onClick={() => setMode('vex')}
-          className="relative flex-1 md:w-1/2 h-1/2 md:h-full flex flex-col items-center justify-center cursor-pointer overflow-hidden group border-b md:border-b-0 md:border-r border-white/5"
-        >
-          {/* Background Layer */}
-          <div className={`absolute inset-0 bg-gray-950 transition-all duration-1000 ${hoveredMode === 'vex' ? 'bg-yellow-950/30' : ''}`}></div>
-          <div className={`absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] group-hover:opacity-20 transition-opacity`}></div>
-          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow-600/0 rounded-full blur-[160px] transition-all duration-1000 ${hoveredMode === 'vex' ? 'bg-yellow-600/15' : ''}`}></div>
+      {/* Programme chooser */}
+      <section id="arena-select" className="max-w-[1500px] mx-auto px-5 sm:px-8 py-20 md:py-28">
+        <h2 className="t-head text-[clamp(1.6rem,3.4vw,2.4rem)] mb-10">
+          {t.selectTitle}
+        </h2>
 
-          {/* Typography */}
-          <div className="relative z-10 text-center">
-            <h2 className={`text-[6rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] font-black heading-font tracking-tighter leading-none transition-all duration-700 select-none ${hoveredMode === 'vex' ? 'text-yellow-500 scale-105 drop-shadow-[0_0_100px_rgba(234,179,8,0.7)]' : 'text-white/10 group-hover:text-yellow-500/40'}`}>
-              VEX
-            </h2>
-            <div className={`mt-2 transition-all duration-700 ${hoveredMode === 'vex' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <p className="text-yellow-500 font-black tracking-[0.5em] md:tracking-[1em] uppercase text-lg md:text-2xl heading-font">{t.vexDesc}</p>
-            </div>
-          </div>
-          
-          <div className={`absolute bottom-20 transition-all duration-700 ${hoveredMode === 'vex' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
-            <i className="fas fa-cog text-7xl text-yellow-500 animate-spin-slow"></i>
-          </div>
-        </div>
+        <div className="grid md:grid-cols-2 gap-5 md:gap-6">
+          <button
+            onClick={() => setMode('vex')}
+            className="group text-left bg-[#FFFFFF] border border-[rgba(14,17,22,0.12)] hover:border-[var(--amber)] transition-colors p-8 md:p-12"
+          >
+            <span className="block w-12 h-[4px] mb-8" style={{ background: 'var(--amber)' }} />
+            <span className="t-mega block text-[clamp(2.6rem,7vw,4.4rem)] leading-none">VEX</span>
+            <span className="t-meta block mt-4 text-[14px]" style={{ color: 'var(--flame-tx)' }}>
+              {t.vexDesc}
+            </span>
+          </button>
 
-        {/* FRC SIDE (Right/Bottom) */}
-        <div 
-          onMouseEnter={() => setHoveredMode('frc')}
-          onMouseLeave={() => setHoveredMode(null)}
-          onClick={() => setMode('frc')}
-          className="relative flex-1 md:w-1/2 h-1/2 md:h-full flex flex-col items-center justify-center cursor-pointer overflow-hidden group"
-        >
-          {/* Background Layer */}
-          <div className={`absolute inset-0 bg-gray-950 transition-all duration-1000 ${hoveredMode === 'frc' ? 'bg-blue-950/30' : ''}`}></div>
-          <div className={`absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] group-hover:opacity-20 transition-opacity`}></div>
-          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/0 rounded-full blur-[160px] transition-all duration-1000 ${hoveredMode === 'frc' ? 'bg-blue-600/15' : ''}`}></div>
-
-          {/* Typography */}
-          <div className="relative z-10 text-center">
-            <h2 className={`text-[6rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] font-black heading-font tracking-tighter leading-none transition-all duration-700 select-none ${hoveredMode === 'frc' ? 'text-blue-500 scale-105 drop-shadow-[0_0_100px_rgba(59,130,246,0.7)]' : 'text-white/10 group-hover:text-blue-500/40'}`}>
-              FRC
-            </h2>
-            <div className={`mt-2 transition-all duration-700 ${hoveredMode === 'frc' ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <p className="text-blue-500 font-black tracking-[0.5em] md:tracking-[1em] uppercase text-lg md:text-2xl heading-font">{t.frcDesc}</p>
-            </div>
-          </div>
-
-          <div className={`absolute bottom-20 transition-all duration-700 ${hoveredMode === 'frc' ? 'opacity-100 scale-100' : 'opacity-0 scale-50'}`}>
-            <i className="fas fa-rocket text-7xl text-blue-500 animate-pulse"></i>
-          </div>
+          <button
+            onClick={() => setMode('frc')}
+            className="group text-left bg-[#FFFFFF] border border-[rgba(14,17,22,0.12)] hover:border-[var(--electric)] transition-colors p-8 md:p-12"
+          >
+            <span className="block w-12 h-[4px] mb-8" style={{ background: 'var(--electric)' }} />
+            <span className="t-mega block text-[clamp(2.6rem,7vw,4.4rem)] leading-none">FRC</span>
+            <span className="t-meta block mt-4 text-[14px]" style={{ color: 'var(--electric)' }}>
+              {t.frcDesc}
+            </span>
+          </button>
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-40 px-6 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-          <div className="space-y-10">
-            <h2 className="text-6xl md:text-9xl font-black heading-font tracking-tighter leading-[0.8] mb-8 bg-clip-text text-transparent bg-gradient-to-r from-white to-white/40">
+      {/* About */}
+      <section className="max-w-[1500px] mx-auto px-5 sm:px-8 pb-20 md:pb-28">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-10 lg:gap-16 items-start border-t border-[var(--ink)] pt-12">
+          <div>
+            <h2 className="t-head text-[clamp(2rem,4.4vw,3.1rem)]">
               {t.aboutTitle}
             </h2>
-            <p className="text-gray-400 text-2xl leading-relaxed max-w-xl">
+            <p className="mt-6 text-[17px] leading-[1.7] text-[var(--ink-2)] max-w-[58ch]">
               {t.aboutText}
             </p>
           </div>
-          
-          <div className="relative group">
-            <div className="absolute -inset-10 bg-gradient-to-tr from-purple-600 to-blue-600 rounded-[4rem] blur-[80px] opacity-10 group-hover:opacity-20 transition-opacity"></div>
-            <div className="relative aspect-[4/5] rounded-[3rem] overflow-hidden border border-white/10 bg-gray-900 group-hover:border-purple-500/30 transition-colors duration-500 shadow-2xl">
-               <img src="https://lh3.googleusercontent.com/d/1YP_IntmX1gCb2aWqT3Lf3cHtQyEH-1VG" className="w-full h-full object-cover transition-all duration-1000 scale-110 group-hover:scale-100" alt="Team" />
-            </div>
+
+          <div className="aspect-[4/5] max-h-[560px] overflow-hidden bg-[#E3E6E9] border border-[rgba(14,17,22,0.12)]">
+            <img
+              src="https://lh3.googleusercontent.com/d/1YP_IntmX1gCb2aWqT3Lf3cHtQyEH-1VG"
+              className="w-full h-full object-cover"
+              alt="TAC Bears"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
 
-      {/* Rotating Quotes Section */}
-      <section className="py-40 px-6 text-center max-w-5xl mx-auto bg-gray-950/30 border-y border-white/5 relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-600/5 rounded-full blur-[100px] pointer-events-none"></div>
-        
-        <div className={`space-y-10 transition-all duration-800 cubic-bezier(0.16, 1, 0.3, 1) ${isTransitioning ? 'opacity-0 scale-95 blur-md' : 'opacity-100 scale-100 blur-0'}`}>
-           <i className="fas fa-quote-left text-5xl text-purple-600/40"></i>
-           
-           <div className="min-h-[160px] flex flex-col justify-center items-center">
-             <h2 className="text-3xl md:text-5xl font-bold heading-font tracking-tight leading-relaxed max-w-4xl mx-auto text-white italic">
-               "{quotes[quoteIndex].text[lang]}"
-             </h2>
-             <div className="mt-8 flex items-center justify-center space-x-4">
-                <div className="h-[1px] w-8 bg-purple-500/50"></div>
-                <span className="text-purple-400 font-black tracking-[0.2em] text-xs uppercase heading-font">
-                  — {quotes[quoteIndex].author}
-                </span>
-                <div className="h-[1px] w-8 bg-purple-500/50"></div>
-             </div>
-           </div>
+      {/* Quotation */}
+      <section className="bg-[#FFFFFF] border-y border-[rgba(14,17,22,0.12)]">
+        <div className="max-w-[1500px] mx-auto px-5 sm:px-8 py-20 md:py-28">
+          <blockquote
+            className={`max-w-[42ch] transition-opacity duration-700 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+          >
+            <p className="t-head text-[clamp(1.5rem,3.4vw,2.3rem)] leading-[1.3]">
+              {quotes[quoteIndex].text[lang]}
+            </p>
+            <cite className="t-meta not-italic block mt-6 text-[13.5px] text-[var(--ink-2)]">
+              {quotes[quoteIndex].author}
+            </cite>
+          </blockquote>
         </div>
       </section>
-
-      <style>{`
-        .animate-spin-slow {
-          animation: spin 8s linear infinite;
-        }
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `}</style>
     </div>
   );
 };

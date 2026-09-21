@@ -23,36 +23,29 @@ const Instagram: React.FC<InstagramProps> = ({ lang, appMode }) => {
     }
   };
 
-  const themeGlow = 'from-yellow-400 via-purple-500 to-blue-400';
-  const themeBtn = 'hover:bg-purple-500';
+  const t = translations[lang];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 text-center">
-      <div className="relative py-20 px-8 rounded-3xl bg-gradient-to-br from-purple-900/20 via-gray-900 to-purple-950/20 border border-purple-500/20 overflow-hidden shadow-2xl">
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-purple-600/10 rounded-full blur-[80px]"></div>
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-purple-600/10 rounded-full blur-[80px]"></div>
-
-        <div className="relative z-10">
-          <i className={`fab fa-instagram text-6xl text-transparent bg-clip-text bg-gradient-to-tr ${themeGlow} mb-8`}></i>
-          
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-6 uppercase tracking-tight">
-            {translations[lang].title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-blue-400">{translations[lang].titleSpan}</span>
+    <div className="on-colour" style={{ background: 'var(--electric)' }}>
+      <div className="max-w-[1500px] mx-auto px-5 sm:px-8 py-16 md:py-24 grid md:grid-cols-[minmax(0,1fr)_auto] gap-8 md:gap-16 items-end">
+        <div>
+          <h2 className="t-mega bleed-left text-[var(--amber)] text-[clamp(2.2rem,6.5vw,4.8rem)] max-w-[16ch]">
+            {t.title} {t.titleSpan}
           </h2>
-          
-          <p className="max-w-xl mx-auto text-gray-400 text-lg mb-10">
-            {translations[lang].description}
+          <p className="mt-5 text-[16px] leading-[1.65] text-white/90 max-w-[54ch]">
+            {t.description}
           </p>
-
-          <a
-            href={igLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`inline-flex items-center px-8 py-4 bg-purple-600 text-white ${themeBtn} hover:text-gray-950 rounded-full font-bold transition-all transform hover:scale-105 heading-font group shadow-lg`}
-          >
-            @TACBEARS
-            <i className="fas fa-external-link-alt ml-3 text-sm transition-transform group-hover:translate-x-1"></i>
-          </a>
         </div>
+
+        <a
+          href={igLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="t-meta shrink-0 inline-flex items-center gap-3 px-8 py-5 text-[14px] bg-white text-[var(--ink)] hover:bg-[var(--amber)] transition-colors"
+        >
+          <i className="fab fa-instagram text-[17px]"></i>
+          @TACBEARS
+        </a>
       </div>
     </div>
   );
