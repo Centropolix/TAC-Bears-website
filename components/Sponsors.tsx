@@ -33,10 +33,12 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
     }
   };
 
-  const sponsorsList = [
+  const sponsorsList: { name: string; logo: string; zoom?: number }[] = [
     {
       name: "Sponsor",
       logo: "https://lh3.googleusercontent.com/d/1rh4tWIN7gOkOqA96Oca8oYkVuZqdOCdq",
+      // the file is a square with wide white margins around the mark
+      zoom: 1.8,
     },
     {
       name: "Sponsor 2",
@@ -62,17 +64,18 @@ const Sponsors: React.FC<SponsorsProps> = ({ lang, appMode }) => {
       </header>
 
       {/* Logos sit on white — the ground a printed logo is made for */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 mb-16">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-16">
         {sponsorsList.map((sponsor, index) => (
           <div
             key={index}
-            className="bg-white ring-1 ring-[var(--ink)]/10 h-40 flex items-center justify-center p-8"
+            className="bg-white ring-1 ring-[var(--ink)]/10 h-56 md:h-80 flex items-center justify-center p-6 md:p-10 overflow-hidden"
           >
             <img
               src={sponsor.logo}
               alt={sponsor.name}
               referrerPolicy="no-referrer"
-              className="max-h-20 max-w-full object-contain"
+              className="w-full h-full object-contain"
+              style={sponsor.zoom ? { transform: `scale(${sponsor.zoom})` } : undefined}
             />
           </div>
         ))}
