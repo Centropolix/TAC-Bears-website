@@ -9,10 +9,7 @@ interface GalleryProps {
 const Gallery: React.FC<GalleryProps> = ({ lang, onNavigate }) => {
   const [selected, setSelected] = useState<{ url: string; title: string } | null>(null);
 
-  const images = [
-    { url: "https://lh3.googleusercontent.com/d/1F0FoGCklk462cNMQrz_IfVOp9j2EdY5_", title: "Season Highlights" },
-    { url: "https://lh3.googleusercontent.com/d/1YP_IntmX1gCb2aWqT3Lf3cHtQyEH-1VG", title: "Team Photo" }
-  ];
+  const images: { url: string; title: string }[] = [];
 
   const translations = {
     en: {
@@ -20,14 +17,16 @@ const Gallery: React.FC<GalleryProps> = ({ lang, onNavigate }) => {
       titleSpan: 'Gallery',
       subtitle: 'Visual Journey',
       back: 'Back to Home',
-      close: 'Close'
+      close: 'Close',
+      empty: 'Photos coming soon.'
     },
     tr: {
       title: 'Bizim',
       titleSpan: 'Galerimiz',
       subtitle: 'Görsel Yolculuk',
       back: 'Ana Sayfaya Dön',
-      close: 'Kapat'
+      close: 'Kapat',
+      empty: 'Fotoğraflar yakında eklenecek.'
     }
   };
 
@@ -53,6 +52,12 @@ const Gallery: React.FC<GalleryProps> = ({ lang, onNavigate }) => {
           {t.subtitle}
         </p>
       </header>
+
+      {images.length === 0 && (
+        <p className="t-meta text-[13px] text-[var(--ink-2)] pb-10 border-b-2 border-[var(--ink)]">
+          {t.empty}
+        </p>
+      )}
 
       <div className="grid md:grid-cols-2 gap-5 md:gap-8">
         {images.map((img, index) => (
