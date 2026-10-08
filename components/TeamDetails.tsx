@@ -12,15 +12,6 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const topMembers = [
-    {
-      name: 'Gökçe Akoğlu',
-      image: '',
-      color: 'from-yellow-400 via-amber-500 to-yellow-600',
-      border: 'border-yellow-400/50 shadow-[0_0_30px_rgba(234,179,8,0.2)]'
-    },
-  ];
-
   const firstRowMembers = [
     {
       name: 'Can Gökçe Öner',
@@ -37,42 +28,12 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
       role: 'Electronics/software Leader'
     },
     {
-      name: 'Zeynep Gizer',
-      image: '',
-      color: 'from-rose-500 to-red-600',
-      border: 'border-rose-600/30',
-      role: 'PR/Business Leader'
-    },
-    {
       name: 'Oğuzalp Kaya',
       image: '',
       color: 'from-emerald-400 to-teal-600',
       border: 'border-emerald-500/20',
       role: 'Design/Mechanics Leader'
     }
-  ];
-
-  const otherTeamMembers = [
-    { name: 'Arda Çiloğlu', image: '', color: 'from-purple-400 to-pink-600', border: 'border-purple-500/20' },
-    { name: 'Talha Yücel', image: '', color: 'from-cyan-400 to-blue-600', border: 'border-cyan-500/20' },
-    { name: 'Talya Tokmak', image: '', color: 'from-rose-400 to-pink-600', border: 'border-rose-500/20' },
-    { name: 'Ali Mirza Kılınç', image: '', color: 'from-blue-500 to-cyan-600', border: 'border-blue-500/20' },
-    { name: 'Aral Tormaç', image: '', color: 'from-teal-400 to-green-600', border: 'border-teal-500/20' },
-    { name: 'Arin Yadigaroğulları', image: '', color: 'from-pink-400 to-rose-600', border: 'border-pink-500/20' },
-    { name: 'Aynil İzmir Gülaçtı', image: '', color: 'from-amber-400 to-orange-600', border: 'border-amber-500/20' },
-    { name: 'Batuhan Selçik', image: '', color: 'from-slate-400 to-slate-600', border: 'border-slate-500/20' },
-    { name: 'Burak Berk Berkeşoğlu', image: '', color: 'from-violet-400 to-purple-600', border: 'border-violet-500/20' },
-    { name: 'Kuzey Bozhöyük', image: '', color: 'from-teal-400 to-emerald-600', border: 'border-teal-500/20' },
-    { name: 'Mehmet Ali Sağlamcı', image: '', color: 'from-blue-500 to-blue-700', border: 'border-blue-600/20' },
-    { name: 'Metehan Tokdemir', image: '', color: 'from-orange-500 to-rose-500', border: 'border-orange-500/20' },
-    { name: 'Öykü Arı', image: '', color: 'from-emerald-500 to-green-700', border: 'border-emerald-600/20' },
-    {
-      name: 'Ömer Utku Ataş',
-      image: '',
-      color: 'from-purple-500 to-indigo-600',
-      border: 'border-purple-600/20'
-    },
-    { name: 'Asme Hayal Çelik', image: '', color: 'from-amber-500 to-yellow-600', border: 'border-amber-600/20' }
   ];
 
   const translations = {
@@ -92,21 +53,9 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
       </header>
 
       <div className="space-y-14 md:space-y-20">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-8 max-w-4xl">
-          {topMembers.map((member, index) => (
-            <RosterCell key={index} member={member} label={t.tag} size="lead" accent="var(--amber)" />
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 md:gap-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 md:gap-8 max-w-5xl">
           {firstRowMembers.map((member, index) => (
             <RosterCell key={index} member={member} size="lead" accent="var(--flame)" />
-          ))}
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-8">
-          {otherTeamMembers.map((member, index) => (
-            <RosterCell key={index} member={member} accent="var(--electric)" />
           ))}
         </div>
       </div>
