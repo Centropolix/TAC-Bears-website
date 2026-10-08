@@ -69,7 +69,7 @@ const Timeline: React.FC<TimelineProps> = ({ lang, appMode }) => {
 
   const translations = {
     en: { title: 'Our', span: 'Journey', subtitle: 'Timeline 2022 - 2026', hint: 'Scroll horizontally to explore' },
-    tr: { title: 'Bizim', span: 'Yolculuğumuz', subtitle: 'Zaman Çizelgesi 2022 - 2026', hint: 'Keşfetmek için kaydırın' }
+    tr: { title: '', span: 'Yolculuğumuz', subtitle: 'Zaman Çizelgesi 2022 - 2026', hint: 'Keşfetmek için kaydırın' }
   };
 
   const t = translations[lang];
