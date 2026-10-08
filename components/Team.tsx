@@ -59,6 +59,10 @@ export const RosterCell: React.FC<{
 );
 
 const Team: React.FC<TeamProps> = ({ lang, onNavigate, appMode }) => {
+  const topMembers = [
+    { name: 'Gökçe Akoğlu', image: '' },
+  ];
+
   const firstRowMembers = [
     {
       name: 'Can Gökçe Öner',
@@ -108,6 +112,13 @@ const Team: React.FC<TeamProps> = ({ lang, onNavigate, appMode }) => {
       </header>
 
       <div className="space-y-14 md:space-y-20">
+        {/* Mentor */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 md:gap-8 max-w-5xl">
+          {topMembers.map((member, index) => (
+            <RosterCell key={index} member={member} label={t.tag} size="lead" accent="var(--amber)" />
+          ))}
+        </div>
+
         {/* Section leads — roles stay visible rather than hiding behind hover */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-5 md:gap-8 max-w-5xl">
           {firstRowMembers.map((member, index) => (
