@@ -34,7 +34,7 @@ const Contact: React.FC<ContactProps> = ({ lang, onNavigate }) => {
       <div className="max-w-[1500px] mx-auto px-5 sm:px-8 py-20 md:py-28">
 
         <header className="mb-10">
-          <h2 className="t-mega bleed-left text-white text-[clamp(2.6rem,9vw,6.5rem)]">
+          <h2 className="t-mega bleed-left text-white text-[clamp(1.6rem,6.8vw,5rem)]">
             {t.title} {t.titleSpan}
           </h2>
           <p className="t-meta mt-4 text-[13px] text-white">

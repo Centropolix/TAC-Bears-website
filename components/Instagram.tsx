@@ -29,7 +29,7 @@ const Instagram: React.FC<InstagramProps> = ({ lang, appMode }) => {
     <div className="on-colour" style={{ background: 'var(--electric)' }}>
       <div className="max-w-[1500px] mx-auto px-5 sm:px-8 py-16 md:py-24 grid md:grid-cols-[minmax(0,1fr)_auto] gap-8 md:gap-16 items-end">
         <div>
-          <h2 className="t-mega bleed-left text-[var(--amber)] text-[clamp(2.2rem,6.5vw,4.8rem)] max-w-[16ch]">
+          <h2 className="t-mega bleed-left text-[var(--amber)] text-[clamp(1.5rem,5vw,3.8rem)] max-w-[16ch]">
             {t.title} {t.titleSpan}
           </h2>
           <p className="mt-5 text-[16px] leading-[1.65] text-white/90 max-w-[54ch]">

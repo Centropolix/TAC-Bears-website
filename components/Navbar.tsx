@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigat
               onNavigate('home');
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="t-mega text-[19px] text-white hover:text-[var(--amber)] transition-colors"
+            className="t-brand shrink-0 whitespace-nowrap text-[17px] lg:text-[19px] text-white hover:text-[var(--amber)] transition-colors"
           >
             TAC BEARS
           </button>
@@ -59,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ activeSection, lang, setLang, onNavigat
                 href={`#${link.id}`}
                 onClick={(e) => handleLinkClick(e, link.id)}
                 aria-current={isActive(link.id) ? 'page' : undefined}
-                className={`t-meta relative h-16 flex items-center px-4 text-[12.5px] transition-colors ${
+                className={`t-meta relative h-16 flex items-center whitespace-nowrap px-2.5 lg:px-4 text-[11.5px] lg:text-[12.5px] transition-colors ${
                   isActive(link.id) ? 'text-white' : 'text-white/60 hover:text-white'
                 }`}
               >

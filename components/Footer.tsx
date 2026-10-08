@@ -34,7 +34,7 @@ const Footer: React.FC<FooterProps> = ({ lang, appMode }) => {
                 window.location.hash = 'home';
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="t-mega text-[clamp(1.8rem,5vw,3rem)] text-white hover:text-white/70 transition-colors"
+              className="t-brand text-[clamp(1.8rem,5vw,3rem)] text-white hover:text-white/70 transition-colors"
             >
               TAC BEARS
             </button>

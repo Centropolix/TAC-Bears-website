@@ -47,7 +47,7 @@ const TeamDetails: React.FC<TeamDetailsProps> = ({ lang, onNavigate }) => {
     <div className="max-w-[1500px] mx-auto px-5 sm:px-8 py-16 md:py-24">
 
       <header className="mb-12 md:mb-16">
-        <h2 className="t-mega bleed-left text-[clamp(2.6rem,8vw,6rem)]">
+        <h2 className="t-mega bleed-left text-[clamp(1.6rem,6.4vw,4.6rem)]">
           {t.title}
         </h2>
       </header>

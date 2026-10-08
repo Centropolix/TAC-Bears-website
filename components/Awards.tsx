@@ -96,7 +96,7 @@ const Awards: React.FC<AwardsProps> = ({ lang, appMode }) => {
     <div className="max-w-[1500px] mx-auto px-5 sm:px-8">
 
       <header className="mb-12 md:mb-20">
-        <h2 className="t-mega bleed-left text-[clamp(2.6rem,8vw,6rem)] max-w-[16ch]">
+        <h2 className="t-mega bleed-left text-[clamp(1.6rem,6.4vw,4.6rem)] max-w-[16ch]">
           {t.title}
         </h2>
         <p className="t-meta mt-4 text-[13px] text-[var(--ink-2)]">

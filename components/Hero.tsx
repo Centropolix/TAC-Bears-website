@@ -28,23 +28,23 @@ const Hero: React.FC<HeroProps> = ({ lang, appMode }) => {
       <div className="max-w-[1500px] mx-auto px-5 sm:px-8 pt-14 pb-0 md:pt-20">
 
         {/* The name at poster scale, cropped hard against the colour field */}
-        <h1 className="enter t-mega bleed-left text-white text-[clamp(4.2rem,20vw,17rem)]">
+        <h1 className="enter t-brand text-white text-[clamp(3rem,14vw,12rem)]">
           TAC<br />BEARS
         </h1>
 
-        <div className="enter grid md:grid-cols-[auto_minmax(0,1fr)] gap-6 md:gap-12 items-end mt-8 md:mt-10" style={{ animationDelay: '90ms' }}>
-          <div className="flex items-end gap-8">
+        <div className="enter flex flex-wrap items-baseline gap-x-6 gap-y-4 mt-8 md:mt-10" style={{ animationDelay: '90ms' }}>
+          <div className="flex items-baseline gap-4 md:gap-6">
             <div>
               <div className="t-fig text-[clamp(2.6rem,7vw,4.5rem)] text-white">2022</div>
               <div className="t-meta mt-2 text-[12px] text-white/85">EST.</div>
             </div>
-            <div className="t-sub text-[clamp(1rem,2.4vw,1.5rem)] text-white pb-1 max-w-[16ch]">
+            <div className="t-sub whitespace-nowrap text-[clamp(1rem,2.4vw,1.5rem)] text-white">
               {t.tag}
             </div>
           </div>
 
           {/* Programme key, doubling as the page's colour legend */}
-          <div className="flex md:justify-end gap-3 pb-2">
+          <div className="flex gap-3">
             <span className="t-meta text-[12px] px-3 py-1.5" style={{ background: 'var(--amber)', color: 'var(--ink)' }}>
               VEX
             </span>
