@@ -29,8 +29,9 @@ export const RosterCell: React.FC<{
           src={member.video}
           poster={member.image}
           muted
-          loop
           playsInline
+          // play once, then fall back to the poster
+          onEnded={(e) => e.currentTarget.load()}
           preload="none"
           onMouseEnter={(e) => { e.currentTarget.play().catch(() => {}); }}
           // load() resets the element, so the poster shows again and the next hover starts from 0
